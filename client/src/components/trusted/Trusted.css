@@ -1,0 +1,20 @@
+.trusted {
+  display: flex;
+  flex-direction: column;
+  background-color: #f7f9fa;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 100px 0px;
+  text-align: center;
+}
+
+.trustedLogo {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-top: 25px;
+  flex-wrap: wrap;
+  gap: 15px;
+}

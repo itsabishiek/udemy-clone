@@ -1,5 +1,7 @@
 import React from "react";
+import { AiOutlineSearch } from "react-icons/ai";
 import "./Home.css";
+import Trusted from "../../components/trusted/Trusted";
 
 const Home = () => {
   return (
@@ -19,13 +21,20 @@ const Home = () => {
       </div>
 
       <div className="homeContents">
-        <div className="">
+        <div className="mobileSearch">
+          <input type="text" placeholder="What do you want to learn?" />
+          <AiOutlineSearch fontSize="20px" />
+        </div>
+
+        <div className="courseText">
           <h1>A board selection of courses</h1>
           <p>
             Choose from over 210,000 online video courses with new additions
             published every month
           </p>
         </div>
+
+        <Trusted />
       </div>
     </div>
   );
