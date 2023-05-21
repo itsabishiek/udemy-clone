@@ -1,0 +1,13 @@
+.app {
+  position: relative;
+}
+
+.app.sidebarActive {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 101000;
+}

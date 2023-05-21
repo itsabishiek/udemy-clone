@@ -1,0 +1,108 @@
+.navbar {
+  width: 100%;
+  height: 72px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 0px 24px;
+  z-index: 1000;
+}
+
+.navLogo {
+  height: 34px;
+}
+
+.searchInput {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid #000;
+  height: 46px;
+  padding: 0px 24px 0px 12px;
+  border-radius: 30px;
+  flex-grow: 1;
+}
+
+.searchInput input {
+  border: none;
+  outline: none;
+  font-size: 15px;
+}
+
+.navbar span {
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.navbar span:hover {
+  color: #a435f0;
+}
+
+.navCart {
+  margin-top: 5px;
+}
+
+.authBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.authBtn button {
+  background: none;
+  border: 1px solid #000;
+  padding: 12px 20px;
+  cursor: pointer;
+}
+
+.authBtn button:last-child {
+  padding: 9px 10px;
+}
+
+.authBtn button.black {
+  background-color: #000;
+  color: #fff;
+}
+
+.authBtn button:hover {
+  opacity: 0.9;
+}
+
+@media (min-width: 768px) {
+  .search {
+    display: none;
+  }
+
+  .hammenu {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    height: 56px;
+    justify-content: space-between;
+    padding: 0px 12px;
+  }
+
+  .navLogo {
+    height: 28.02px;
+  }
+
+  .searchInput {
+    display: none;
+  }
+
+  .search {
+    margin-top: 5px;
+  }
+
+  .navbar span {
+    display: none;
+  }
+
+  .authBtn {
+    display: none;
+  }
+}
