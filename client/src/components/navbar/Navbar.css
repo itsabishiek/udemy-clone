@@ -69,7 +69,7 @@
   opacity: 0.9;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .search {
     display: none;
   }
@@ -79,7 +79,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .navbar {
     height: 56px;
     justify-content: space-between;

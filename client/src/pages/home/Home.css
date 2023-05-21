@@ -1,0 +1,93 @@
+.home {
+  height: calc(100vh - 72px);
+}
+
+.homeBanner {
+  position: relative;
+}
+
+.homeBanner img {
+  width: 100%;
+}
+
+.homeBannerContents {
+  position: absolute;
+  width: 27rem;
+  top: 20%;
+  left: 50px;
+  transform: translateY(-20%);
+  background-color: #fff;
+  padding: 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.homeBannerContents h1 {
+  font-size: 32px;
+  color: #1c1d1f;
+}
+
+.homeBannerContents p {
+  font-size: 16px;
+  font-weight: 500;
+  color: #1c1d1f;
+}
+
+.homeContents {
+  padding: 24px;
+}
+
+.homeContents h1 {
+  font-size: 32px;
+  color: #1c1d1f;
+}
+
+.homeContents p {
+  margin-top: 5px;
+  font-size: 18px;
+  font-weight: 500;
+  opacity: 0.7;
+}
+
+@media (max-width: 1024px) {
+  .homeBannerContents {
+    top: 15%;
+    transform: translateY(-15%);
+  }
+}
+
+@media (max-width: 768px) {
+  .home {
+    height: calc(100vh - 56px);
+  }
+
+  .homeBannerContents {
+    top: 6%;
+    transform: translateY(-6%);
+  }
+}
+
+@media (max-width: 700px) {
+  .homeBannerContents {
+    position: relative;
+    padding: 12px 24px;
+    box-shadow: none;
+    width: 100%;
+    left: 0;
+    top: 0;
+  }
+
+  .homeBannerContents h1 {
+    font-size: 24px;
+  }
+
+  .homeBannerContents p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 425px) {
+  .homeBanner img {
+    object-fit: cover;
+    height: 250px;
+  }
+}

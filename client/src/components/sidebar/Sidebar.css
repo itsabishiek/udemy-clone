@@ -6,6 +6,7 @@
   width: 250px;
   padding: 10px 16px;
   background-color: #fff;
+  border-right: 1px solid #d4d4d4;
   transition: 0.5s;
   z-index: 10001;
 }
@@ -31,7 +32,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #a435f0;
+  background-color: #fff;
   border-radius: 50%;
 }
 

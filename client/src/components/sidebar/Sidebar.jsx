@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import "./Sidebar.css";
 import { sidebarData } from "../../utils/SidebarData";
 import { FiChevronRight } from "react-icons/fi";
-import { AiOutlineClose } from "react-icons/ai";
+import { GrFormClose } from "react-icons/gr";
 
 const Sidebar = ({ showSidebar, setShowSidebar }) => {
   return (
     <div className={showSidebar ? "sidebar active" : "sidebar"}>
       {showSidebar && (
         <div className="sidebarClose" onClick={() => setShowSidebar(false)}>
-          <AiOutlineClose fontSize="24px" color="white" />
+          <GrFormClose fontSize="25px" />
         </div>
       )}
       <ul className="sidebarItems" onClick={() => setShowSidebar(false)}>
