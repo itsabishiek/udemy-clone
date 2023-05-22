@@ -4,6 +4,7 @@ import { GrLanguage } from "react-icons/gr";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { FcMenu } from "react-icons/fc";
 import "./Navbar.css";
+import { Link } from "react-router-dom";
 
 const Navbar = ({ showSidebar, setShowSidebar }) => {
   const toggleSidebar = () => setShowSidebar(!showSidebar);
@@ -14,11 +15,13 @@ const Navbar = ({ showSidebar, setShowSidebar }) => {
         <FcMenu fontSize="20px" />
       </div>
 
-      <img
-        src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg"
-        alt=""
-        className="navLogo"
-      />
+      <Link to="/">
+        <img
+          src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg"
+          alt=""
+          className="navLogo"
+        />
+      </Link>
       <span>Categories</span>
 
       <div className="searchInput">
@@ -36,11 +39,13 @@ const Navbar = ({ showSidebar, setShowSidebar }) => {
         </div>
       </div>
       <div className="authBtn">
-        <button>Log in</button>
-        <button className="black">Sign up</button>
-        <button>
+        <Link to="/login">Log in</Link>
+        <Link to="/signup" className="black">
+          Sign up
+        </Link>
+        <Link to="/">
           <GrLanguage fontSize="17px" />
-        </button>
+        </Link>
       </div>
     </nav>
   );

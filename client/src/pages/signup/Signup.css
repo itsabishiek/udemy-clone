@@ -1,0 +1,144 @@
+.signup {
+  width: 100%;
+  min-height: calc(100vh - 72px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup h3 {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  color: #1c2d5f;
+  font-size: 15px;
+  font-weight: bolder;
+}
+
+.actionBtns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  gap: 20px;
+}
+
+.signupBtn {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: #fff;
+  border: 1px solid #000;
+  width: 100%;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.signupBtn:hover {
+  background-color: #eee;
+}
+
+.signupBtn img {
+  height: 35px;
+  width: 35px;
+}
+
+.signupBtn span {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.authInput {
+  width: 100%;
+  border: 1px solid #000;
+  outline: none;
+  padding: 15px;
+  font-size: 16px;
+}
+
+.difficultIndicator {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 3px;
+  margin-top: 10px;
+}
+
+.indicator {
+  background-color: #d1d7dc;
+  height: 5px;
+  width: 40px;
+  border-radius: 2px;
+}
+
+.sendme {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.sendme input {
+  accent-color: #a435f0;
+  margin-top: 5px;
+}
+
+.sendme span {
+  font-size: 14px;
+}
+
+.submitBtn {
+  width: 100%;
+  border: none;
+  padding: 15px 0px;
+  cursor: pointer;
+  background-color: #a435f0;
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.submitBtn:hover {
+  opacity: 0.9;
+}
+
+.helperTextWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.helperText {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.helperText a {
+  font-weight: bolder;
+  color: #a435f0;
+  text-decoration: underline;
+}
+
+hr {
+  border: 1px solid #eee;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .signup {
+    min-height: calc(100vh - 56px);
+  }
+}
+
+@media (max-width: 450px) {
+  .actionBtns {
+    width: 100%;
+    padding: 25px;
+  }
+}

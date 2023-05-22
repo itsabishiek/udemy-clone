@@ -41,6 +41,7 @@
 
 .navCart {
   margin-top: 5px;
+  cursor: pointer;
 }
 
 .authBtn {
@@ -49,23 +50,28 @@
   gap: 10px;
 }
 
-.authBtn button {
+.authBtn a {
   background: none;
   border: 1px solid #000;
-  padding: 12px 20px;
+  padding: 8px 20px;
+  font-size: 15px;
+  font-weight: 500;
   cursor: pointer;
 }
 
-.authBtn button:last-child {
-  padding: 9px 10px;
+.authBtn a:last-child {
+  padding: 11px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.authBtn button.black {
+.authBtn a.black {
   background-color: #000;
   color: #fff;
 }
 
-.authBtn button:hover {
+.authBtn a:hover {
   opacity: 0.9;
 }
 

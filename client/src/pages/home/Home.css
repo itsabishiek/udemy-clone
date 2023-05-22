@@ -7,6 +7,8 @@
 
 .homeBanner {
   position: relative;
+  min-height: 250px;
+  background-color: #f7f9fa;
 }
 
 .homeBanner img {
@@ -16,9 +18,9 @@
 .homeBannerContents {
   position: absolute;
   width: 27rem;
-  top: 20%;
+  top: 15%;
   left: 50px;
-  transform: translateY(-20%);
+  transform: translateY(-15%);
   background-color: #fff;
   padding: 24px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -65,8 +67,8 @@
 
 @media (max-width: 1024px) {
   .homeBannerContents {
-    top: 15%;
-    transform: translateY(-15%);
+    top: 10%;
+    transform: translateY(-10%);
   }
 }
 

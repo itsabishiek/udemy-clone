@@ -5,6 +5,8 @@ import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/home/Home";
 import Sidebar from "./components/sidebar/Sidebar";
+import Login from "./pages/login/Login";
+import Signup from "./pages/signup/Signup";
 
 const App = () => {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -30,6 +32,14 @@ const App = () => {
         {
           path: "/",
           element: <Home />,
+        },
+        {
+          path: "/login",
+          element: <Login />,
+        },
+        {
+          path: "/signup",
+          element: <Signup />,
         },
       ],
     },
