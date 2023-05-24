@@ -1,7 +1,9 @@
 import React from "react";
 import { AiOutlineSearch } from "react-icons/ai";
-import "./Home.css";
 import Trusted from "../../components/trusted/Trusted";
+import CourseCard from "../../components/courseCard/CourseCard";
+import Slide from "../../components/slide/Slide";
+import "./Home.css";
 
 const Home = () => {
   return (
@@ -21,9 +23,11 @@ const Home = () => {
       </div>
 
       <div className="homeContents">
-        <div className="mobileSearch">
-          <input type="text" placeholder="What do you want to learn?" />
-          <AiOutlineSearch fontSize="20px" />
+        <div style={{ padding: "0px 24px" }}>
+          <div className="mobileSearch">
+            <input type="text" placeholder="What do you want to learn?" />
+            <AiOutlineSearch fontSize="20px" />
+          </div>
         </div>
 
         <div className="courseText">
@@ -32,6 +36,23 @@ const Home = () => {
             Choose from over 210,000 online video courses with new additions
             published every month
           </p>
+        </div>
+
+        <div>
+          <h2 style={{ marginBottom: "10px", padding: "0px 24px" }}>
+            Students are viewing
+          </h2>
+          <Slide>
+            <CourseCard />
+            <CourseCard />
+            <CourseCard />
+            <CourseCard />
+            <CourseCard />
+            <CourseCard />
+            <CourseCard />
+            <CourseCard />
+            <CourseCard />
+          </Slide>
         </div>
 
         <Trusted />

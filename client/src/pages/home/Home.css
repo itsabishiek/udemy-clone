@@ -18,9 +18,9 @@
 .homeBannerContents {
   position: absolute;
   width: 27rem;
-  top: 15%;
+  top: 12%;
   left: 50px;
-  transform: translateY(-15%);
+  transform: translateY(-12%);
   background-color: #fff;
   padding: 24px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -38,7 +38,7 @@
 }
 
 .homeContents {
-  padding: 24px;
+  /* padding: 24px; */
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -59,6 +59,7 @@
 
 .courseText {
   margin-top: 20px;
+  padding: 0px 24px;
 }
 
 .mobileSearch {

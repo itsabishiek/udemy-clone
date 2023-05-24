@@ -7,6 +7,7 @@ import Home from "./pages/home/Home";
 import Sidebar from "./components/sidebar/Sidebar";
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
+import CourseDetails from "./pages/courseDetails/CourseDetails";
 
 const App = () => {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -40,6 +41,10 @@ const App = () => {
         {
           path: "/signup",
           element: <Signup />,
+        },
+        {
+          path: "/course/:courseId",
+          element: <CourseDetails />,
         },
       ],
     },

@@ -1,0 +1,55 @@
+.courseCard {
+  width: 245px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.courseCard img {
+  width: 100%;
+}
+
+.courseCard:hover img {
+  opacity: 0.95;
+}
+
+.courseCard h3 {
+  font-size: 16px;
+}
+
+.courseCard .courseAuthor {
+  font-size: 12px;
+}
+
+.courseCard .rating {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.courseCard .rating span {
+  font-size: 13px;
+}
+
+.courseCard .rating .ratingCount {
+  font-weight: 600;
+  color: #c26b0e;
+}
+
+.courseCard .coursePrice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.courseCard .coursePrice p {
+  color: #000;
+  font-size: 16px;
+}
+
+.courseCard .coursePrice .courseActualPrice {
+  text-decoration: line-through;
+  color: #a5a2a2;
+  font-weight: normal;
+}

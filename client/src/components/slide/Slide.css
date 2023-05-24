@@ -1,0 +1,22 @@
+.slide {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+  padding: 12px;
+}
+
+.slideContainer {
+  position: relative;
+  width: 100%;
+}
+
+.rec-item-wrapper {
+  width: 245px !important;
+}
+
+.rec-arrow {
+  min-width: 40px !important;
+  line-height: 40px !important;
+  width: 40px !important;
+  height: 40px !important;
+}
