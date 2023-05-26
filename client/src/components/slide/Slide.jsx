@@ -14,7 +14,12 @@ const Slide = ({ children }) => {
   return (
     <div className="slide">
       <div className="slideContainer">
-        <Carousel breakPoints={breakpoints} pagination={false}>
+        <Carousel
+          breakPoints={breakpoints}
+          pagination={false}
+          enableSwipe
+          enableMouseSwipe
+        >
           {children}
         </Carousel>
       </div>
