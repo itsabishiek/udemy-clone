@@ -1,0 +1,63 @@
+.teaching {
+  min-height: calc(100vh - 72px);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ededed;
+  padding: 0px 100px;
+}
+
+.teaching .bannerImg {
+  height: calc(100vh - 72px);
+}
+
+.teaching .bannerImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.teachingBannerBox {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 400px;
+}
+
+.teachingBannerBox p {
+  font-size: 16px;
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+.teachingBannerBox button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #000;
+  color: white;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.teachingBannerBox button:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .teaching {
+    padding: 50px 20px;
+    flex-direction: column-reverse;
+    gap: 20px;
+  }
+
+  .teaching .bannerImg {
+    height: 400px;
+  }
+
+  .teachingBannerBox {
+    width: 100%;
+  }
+}

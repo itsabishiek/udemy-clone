@@ -8,6 +8,8 @@ import Sidebar from "./components/sidebar/Sidebar";
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
 import CourseDetails from "./pages/courseDetails/CourseDetails";
+import Teaching from "./pages/teaching/Teaching";
+import Instructor from "./pages/instructor/Instructor";
 
 const App = () => {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -45,6 +47,14 @@ const App = () => {
         {
           path: "/course/:courseId",
           element: <CourseDetails />,
+        },
+        {
+          path: "/teaching",
+          element: <Teaching />,
+        },
+        {
+          path: "/instructor/courses",
+          element: <Instructor />,
         },
       ],
     },

@@ -22,14 +22,14 @@ const Navbar = ({ showSidebar, setShowSidebar }) => {
           className="navLogo"
         />
       </Link>
-      <span>Categories</span>
+      <Link to="/">Categories</Link>
 
       <div className="searchInput">
         <AiOutlineSearch fontSize="20px" />
         <input type="text" placeholder="Search for anything" />
       </div>
-      <span>Udemy Business</span>
-      <span>Teach on Udemy</span>
+      <Link to="/">Udemy Business</Link>
+      <Link to="/teaching">Teach on Udemy</Link>
       <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
         <div className="search">
           <AiOutlineSearch fontSize="20px" />

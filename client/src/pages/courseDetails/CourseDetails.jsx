@@ -269,7 +269,7 @@ const CourseDetails = () => {
                 <hr />
               </div>
 
-              <div className="coursePrice">
+              <div className="coursePricing">
                 <h3>₹3,399</h3>
                 <button>Buy this course</button>
                 <p className="courseHelperText">
