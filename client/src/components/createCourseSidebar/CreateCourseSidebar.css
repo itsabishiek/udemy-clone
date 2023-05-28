@@ -1,0 +1,29 @@
+.createCourseSidebar {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.createSidebarItems {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.createSidebarItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.createCourseSidebar button {
+  border: none;
+  outline: none;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #a435f0;
+  color: white;
+  cursor: pointer;
+}

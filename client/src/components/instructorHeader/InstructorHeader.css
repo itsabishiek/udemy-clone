@@ -1,0 +1,65 @@
+.instructorHeader {
+  width: 100%;
+  height: 72px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 24px;
+  gap: 20px;
+}
+
+.instructorHeaderCenter {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.instructorHeaderItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.instructorHeaderItem h3 {
+  font-size: 16px;
+}
+
+.instructorHeaderItem:hover {
+  color: #a435f0;
+}
+
+.instructorHeaderRight {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.instructorHeaderRight a {
+  font-size: 14.5px;
+}
+
+.instructorHeaderRight a:hover {
+  color: #a435f0;
+}
+
+.instructorHeaderRight .instructorAvatar {
+  background-color: #000;
+  width: 35px;
+  height: 35px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .instructorHeaderCenter {
+    display: none;
+  }
+}

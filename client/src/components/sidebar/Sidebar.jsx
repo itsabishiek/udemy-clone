@@ -4,6 +4,10 @@ import "./Sidebar.css";
 import { sidebarData } from "../../utils/SidebarData";
 import { FiChevronRight } from "react-icons/fi";
 import { GrFormClose } from "react-icons/gr";
+import { FiAirplay } from "react-icons/fi";
+import { MdOutlineMessage } from "react-icons/md";
+import { IoStatsChart } from "react-icons/io5";
+import { VscTools } from "react-icons/vsc";
 
 const Sidebar = ({ showSidebar, setShowSidebar }) => {
   return (
@@ -27,14 +31,44 @@ const Sidebar = ({ showSidebar, setShowSidebar }) => {
 
         <hr />
 
-        <span>Most Popular</span>
-        {sidebarData.map((data) => (
-          <li key={data.id} className={data.cName}>
-            <Link to="/">
-              {data.item} <FiChevronRight />
+        {window.location.pathname !== "/instructor/courses" ? (
+          <>
+            <span>Most Popular</span>
+            {sidebarData.map((data) => (
+              <li key={data.id} className={data.cName}>
+                <Link to="/">
+                  {data.item} <FiChevronRight />
+                </Link>
+              </li>
+            ))}
+          </>
+        ) : (
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "15px",
+              padding: "15px 0px",
+            }}
+          >
+            <Link to="/" className="instructorHeaderItem">
+              <FiAirplay fontSize="25px" />
+              <h3>Courses</h3>
             </Link>
-          </li>
-        ))}
+            <Link to="/" className="instructorHeaderItem">
+              <MdOutlineMessage fontSize="25px" />
+              <h3>Communication</h3>
+            </Link>
+            <Link to="/" className="instructorHeaderItem">
+              <IoStatsChart fontSize="25px" />
+              <h3>Performance</h3>
+            </Link>
+            <Link to="/" className="instructorHeaderItem">
+              <VscTools fontSize="25px" />
+              <h3>Tools</h3>
+            </Link>
+          </div>
+        )}
 
         <hr />
 

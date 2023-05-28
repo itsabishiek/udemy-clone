@@ -1,0 +1,67 @@
+.createCourseDetails {
+  display: flex;
+  padding: 40px;
+  gap: 20px;
+}
+
+.createCourseLeft {
+  flex: 1;
+}
+
+.createCourseRight {
+  flex: 4;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.16);
+}
+
+.createCourseRightHeader {
+  padding: 24px 48px;
+}
+
+.createCourseContent {
+  padding: 48px;
+}
+
+.createCourseContent a {
+  color: #5624d0;
+  text-decoration: underline;
+}
+
+@media (min-width: 1024px) {
+  .createCourseDetails .hammenu {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .createCourseDetails .hammenu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .createCourseDetails .hammenu button {
+    border: none;
+    outline: none;
+    padding: 12px;
+    background-color: #a435f0;
+    color: white;
+  }
+
+  .createCourseDetails {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .createCourseDetails {
+    padding: 20px;
+  }
+
+  .createCourseRightHeader {
+    padding: 24px;
+  }
+
+  .createCourseContent {
+    padding: 24px;
+  }
+}

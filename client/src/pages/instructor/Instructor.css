@@ -1,0 +1,67 @@
+.instructor {
+  min-height: calc(100vh);
+  padding: 10px 48px;
+}
+
+.instructorTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.instructorTop button {
+  padding: 12px;
+  border: none;
+  outline: none;
+  background-color: #a435f0;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.instructorFilter {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.instructorFilterSearch {
+  display: flex;
+  align-items: center;
+  border: 1px solid #000;
+}
+
+.instructorFilterSearch input {
+  border: none;
+  outline: none;
+  padding: 12px;
+  font-size: 15px;
+}
+
+.instructorFilterSearch input::placeholder {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.instructorFilterSearch span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  background-color: #000;
+  cursor: pointer;
+}
+
+.instructorFilter .instructorFilterSelect select {
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+  padding: 10px;
+  border: 1px solid #000;
+  cursor: pointer;
+}
