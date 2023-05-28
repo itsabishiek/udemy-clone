@@ -77,7 +77,7 @@ const Sidebar = ({ showSidebar, setShowSidebar }) => {
           <Link to="/">Udemy Business</Link>
         </li>
         <li className="sidebarItem">
-          <Link to="/">Get the app</Link>
+          <Link to="/teaching">Teaching on Udemy</Link>
         </li>
         <li className="sidebarItem">
           <Link to="/">Invite friends</Link>
