@@ -1,6 +1,7 @@
 import React from "react";
-import "./CreateCourse.css";
 import { Link } from "react-router-dom";
+
+import "./CreateCourse.css";
 
 const CreateCourse = () => {
   return (

@@ -6,7 +6,7 @@ import { AiOutlineMenuUnfold } from "react-icons/ai";
 import "./CreateCourseDetails.css";
 
 const CreateCourseDetails = () => {
-  const [showMenu, setShowMenu] = useState(true);
+  const [showMenu, setShowMenu] = useState(false);
 
   return (
     <div className="createCourseDetails">

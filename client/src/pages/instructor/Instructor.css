@@ -65,3 +65,24 @@
   border: 1px solid #000;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .instructor {
+    padding: 10px 24px;
+  }
+
+  .instructorFilter {
+    justify-content: space-between;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 415px) {
+  .instructor {
+    padding: 10px;
+  }
+
+  .instructorFilterSearch input {
+    width: 150px;
+  }
+}

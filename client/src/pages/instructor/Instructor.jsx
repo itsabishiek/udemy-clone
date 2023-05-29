@@ -1,8 +1,8 @@
 import React from "react";
 import { IoSearchSharp } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 import "./Instructor.css";
-import { Link } from "react-router-dom";
 
 const Instructor = () => {
   return (
