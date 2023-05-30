@@ -3,8 +3,9 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { GrLanguage } from "react-icons/gr";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { FcMenu } from "react-icons/fc";
-import "./Navbar.css";
 import { Link } from "react-router-dom";
+
+import "./Navbar.css";
 
 const Navbar = ({ showSidebar, setShowSidebar }) => {
   const toggleSidebar = () => setShowSidebar(!showSidebar);
@@ -15,7 +16,7 @@ const Navbar = ({ showSidebar, setShowSidebar }) => {
         <FcMenu fontSize="20px" />
       </div>
 
-      <Link to="/">
+      <Link to="/" className="navLogo">
         <img
           src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg"
           alt=""

@@ -1,0 +1,99 @@
+/* Course Type */
+
+.courseType {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.courseTypeCards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.courseTypeCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 225px;
+  height: 270px;
+  padding: 32px 16px;
+  border: 1px solid #d1d7dc;
+  cursor: pointer;
+}
+
+.courseTypeCard:hover {
+  border: 2px solid #000000;
+}
+
+.courseType h1 {
+  text-align: center;
+}
+
+.courseTypeCard p {
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Course Title */
+
+.createCourseTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.createCourseTitle .createCourseSearch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0px 15px;
+  width: 550px;
+  border: 1px solid #000;
+}
+
+.createCourseTitle .createCourseSearch input {
+  border: none;
+  outline: none;
+  background-color: #fff;
+  padding: 15px 0px;
+  font-size: 15px;
+  width: 100%;
+}
+
+/* Course Cateogry */
+
+.courseCateogry {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 30px;
+}
+
+.courseCateogry select {
+  padding: 15px 12px;
+  width: 400px;
+  font-size: 15px;
+  outline: none;
+  border: 1px solid #000;
+}
+
+@media (max-width: 560px) {
+  .courseTypeCards {
+    flex-direction: column;
+  }
+
+  .createCourseTitle .createCourseSearch {
+    width: 100%;
+  }
+
+  .courseCateogry select {
+    width: 100%;
+  }
+}
