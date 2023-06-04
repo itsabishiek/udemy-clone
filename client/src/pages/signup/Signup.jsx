@@ -1,47 +1,109 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import newRequest from "../../utils/newRequest";
 import "./Signup.css";
-import { Link } from "react-router-dom";
 
 const Signup = () => {
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setUser((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await newRequest.post("/auth/register", { ...user });
+      localStorage.setItem("currentUser", JSON.stringify(res.data));
+      console.log(res.data);
+
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+      setError(error.message);
+    }
+  };
+
   return (
     <div className="signup">
       <div className="actionBtns">
         <h3>Log in to your Udemy account</h3>
 
-        <input type="text" placeholder="Full name" className="authInput" />
-        <input type="text" placeholder="Email" className="authInput" />
-        <div style={{ width: "100%" }}>
-          <input type="password" placeholder="Password" className="authInput" />
+        <form
+          onSubmit={handleSubmit}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "20px",
+            width: "100%",
+          }}
+        >
+          <input
+            name="name"
+            type="text"
+            placeholder="Full name"
+            className="authInput"
+            onChange={handleChange}
+          />
+          <input
+            name="email"
+            type="text"
+            placeholder="Email"
+            className="authInput"
+            onChange={handleChange}
+          />
+          <div style={{ width: "100%" }}>
+            <input
+              name="password"
+              type="password"
+              placeholder="Password"
+              className="authInput"
+              onChange={handleChange}
+            />
 
-          <div className="difficultIndicator">
-            <div className="indicator"></div>
-            <div className="indicator"></div>
-            <div className="indicator"></div>
-            <div className="indicator"></div>
+            <div className="difficultIndicator">
+              <div className="indicator"></div>
+              <div className="indicator"></div>
+              <div className="indicator"></div>
+              <div className="indicator"></div>
+            </div>
           </div>
-        </div>
 
-        <div className="sendme">
-          <input type="checkbox" />
-          <span>
-            Send me special offers, personalised recommendations, and learning
-            tips.
-          </span>
-        </div>
+          <div className="sendme">
+            <input type="checkbox" />
+            <span>
+              Send me special offers, personalised recommendations, and learning
+              tips.
+            </span>
+          </div>
 
-        <button className="submitBtn">Sign up</button>
+          {error && <span className="authError">{error}</span>}
 
-        <div className="helperTextWrapper">
-          <span style={{ fontSize: "12px" }}>
-            By signing up, you agree to our Terms of Use and Privacy Policy.
-          </span>
+          <button className="submitBtn" type="submit">
+            Sign up
+          </button>
 
-          <hr />
+          <div className="helperTextWrapper">
+            <span style={{ fontSize: "12px" }}>
+              By signing up, you agree to our Terms of Use and Privacy Policy.
+            </span>
 
-          <span className="helperText">
-            {`Don't have an account?`} <Link to="/login">Log in</Link>
-          </span>
-        </div>
+            <hr />
+
+            <span className="helperText">
+              {`Don't have an account?`} <Link to="/login">Log in</Link>
+            </span>
+          </div>
+        </form>
       </div>
     </div>
   );

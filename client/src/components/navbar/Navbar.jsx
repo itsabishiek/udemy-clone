@@ -1,14 +1,29 @@
 import React from "react";
-import { AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineBell, AiOutlineHeart, AiOutlineSearch } from "react-icons/ai";
 import { GrLanguage } from "react-icons/gr";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { FcMenu } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import getCurrentUser from "../../utils/getCurrentUser";
+import newRequest from "../../utils/newRequest";
 
 import "./Navbar.css";
 
 const Navbar = ({ showSidebar, setShowSidebar }) => {
   const toggleSidebar = () => setShowSidebar(!showSidebar);
+  const currentUser = getCurrentUser();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await newRequest.post("/auth/logout");
+      localStorage.removeItem("currentUser");
+
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <nav className="navbar">
@@ -39,15 +54,25 @@ const Navbar = ({ showSidebar, setShowSidebar }) => {
           <HiOutlineShoppingCart fontSize="22px" />
         </div>
       </div>
-      <div className="authBtn">
-        <Link to="/login">Log in</Link>
-        <Link to="/signup" className="black">
-          Sign up
-        </Link>
-        <Link to="/">
-          <GrLanguage fontSize="17px" />
-        </Link>
-      </div>
+      {!currentUser ? (
+        <div className="authBtn">
+          <Link to="/login">Log in</Link>
+          <Link to="/signup" className="black">
+            Sign up
+          </Link>
+          <Link to="/">
+            <GrLanguage fontSize="17px" />
+          </Link>
+        </div>
+      ) : (
+        <div className="navItems">
+          <AiOutlineHeart fontSize="22px" />
+          <AiOutlineBell fontSize="22px" />
+          <div className="navAvatar" onClick={handleLogout}>
+            {currentUser?.name[0]}
+          </div>
+        </div>
+      )}
     </nav>
   );
 };

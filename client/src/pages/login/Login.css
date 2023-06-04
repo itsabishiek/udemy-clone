@@ -99,6 +99,13 @@ hr {
   width: 100%;
 }
 
+.authError {
+  color: rgb(216, 35, 35);
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+
 @media (max-width: 1024px) {
   .login {
     min-height: calc(100vh - 56px);
