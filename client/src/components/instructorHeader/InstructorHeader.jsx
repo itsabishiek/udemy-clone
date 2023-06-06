@@ -44,7 +44,7 @@ const InstructorHeader = ({ showSidebar, setShowSidebar }) => {
       </div>
 
       <div className="instructorHeaderRight">
-        <Link to="/">Student</Link>
+        <a href="/">Student</a>
         <AiOutlineBell fontSize="25px" />
         <div className="instructorAvatar">A</div>
         <div className="hammenu" onClick={toggleSidebar}>

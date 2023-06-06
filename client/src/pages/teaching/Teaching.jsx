@@ -1,12 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import newRequest from "../../utils/newRequest";
 import getCurrentUser from "../../utils/getCurrentUser";
 import "./Teaching.css";
 
 const Teaching = () => {
   const currentUser = getCurrentUser();
-  const navigate = useNavigate();
 
   const teachOnUdemy = async () => {
     try {
@@ -18,7 +16,7 @@ const Teaching = () => {
       currentUser["isInstructor"] = true;
       localStorage.setItem("currentUser", JSON.stringify(currentUser));
 
-      navigate("/instructor/courses");
+      window.location.href = "/instructor/courses";
     } catch (error) {
       console.log(error);
     }

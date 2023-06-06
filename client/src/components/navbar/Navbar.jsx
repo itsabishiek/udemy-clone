@@ -49,7 +49,7 @@ const Navbar = ({ showSidebar, setShowSidebar }) => {
       {!currentUser?.isInstructor ? (
         <Link to="/teaching">Teach on Udemy</Link>
       ) : (
-        <Link to="/instructor/courses">Instructor</Link>
+        <a href="/instructor/courses">Instructor</a>
       )}
       <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
         <div className="search">
