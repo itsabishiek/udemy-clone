@@ -25,7 +25,7 @@ const register = async (req, res, next) => {
     res
       .cookie("accessToken", token, {
         httpOnly: true,
-        secure: true,
+        secure: false,
         sameSite: "none",
       })
       .status(200)
@@ -55,7 +55,7 @@ const login = async (req, res, next) => {
     res
       .cookie("accessToken", token, {
         httpOnly: true,
-        secure: true,
+        secure: false,
         sameSite: "none",
       })
       .status(200)
@@ -68,7 +68,7 @@ const login = async (req, res, next) => {
 const logout = async (req, res, next) => {
   try {
     res
-      .clearCookie("accessToken", { sameSite: "none", secure: true })
+      .clearCookie("accessToken", { sameSite: "none", secure: false })
       .status(200)
       .send("User has been logged out!");
   } catch (error) {

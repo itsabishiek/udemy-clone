@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlineBell, AiOutlineHeart, AiOutlineSearch } from "react-icons/ai";
 import { GrLanguage } from "react-icons/gr";
 import { HiOutlineShoppingCart } from "react-icons/hi";
@@ -13,6 +13,7 @@ const Navbar = ({ showSidebar, setShowSidebar }) => {
   const toggleSidebar = () => setShowSidebar(!showSidebar);
   const currentUser = getCurrentUser();
   const navigate = useNavigate();
+  const [showMenu, setShowMenu] = useState(false);
 
   const handleLogout = async () => {
     try {
@@ -45,7 +46,11 @@ const Navbar = ({ showSidebar, setShowSidebar }) => {
         <input type="text" placeholder="Search for anything" />
       </div>
       <Link to="/">Udemy Business</Link>
-      <Link to="/teaching">Teach on Udemy</Link>
+      {!currentUser?.isInstructor ? (
+        <Link to="/teaching">Teach on Udemy</Link>
+      ) : (
+        <Link to="/instructor/courses">Instructor</Link>
+      )}
       <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
         <div className="search">
           <AiOutlineSearch fontSize="20px" />
@@ -65,13 +70,37 @@ const Navbar = ({ showSidebar, setShowSidebar }) => {
           </Link>
         </div>
       ) : (
-        <div className="navItems">
-          <AiOutlineHeart fontSize="22px" />
-          <AiOutlineBell fontSize="22px" />
-          <div className="navAvatar" onClick={handleLogout}>
-            {currentUser?.name[0]}
+        <>
+          <div className="navItems">
+            <AiOutlineHeart fontSize="22px" />
+            <AiOutlineBell fontSize="22px" />
+            <div className="navAvatar" onClick={() => setShowMenu(!showMenu)}>
+              {currentUser?.name[0]}
+            </div>
           </div>
-        </div>
+
+          <div
+            className="menuItems"
+            style={showMenu ? { display: "flex" } : { display: "none" }}
+          >
+            <div className="menuItemHeader">
+              <div className="navAvatar">{currentUser?.name[0]}</div>
+              <div className="menuInfo">
+                <h3>{currentUser?.name}</h3>
+                <p>{currentUser?.email}</p>
+              </div>
+            </div>
+
+            <hr />
+
+            <Link to="/instructor/courses" className="menuItem">
+              Instructor Dashboard
+            </Link>
+            <Link to="#" className="menuItem" onClick={handleLogout}>
+              Logout
+            </Link>
+          </div>
+        </>
       )}
     </nav>
   );

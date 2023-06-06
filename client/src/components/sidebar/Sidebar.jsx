@@ -8,8 +8,11 @@ import { FiAirplay } from "react-icons/fi";
 import { MdOutlineMessage } from "react-icons/md";
 import { IoStatsChart } from "react-icons/io5";
 import { VscTools } from "react-icons/vsc";
+import getCurrentUser from "../../utils/getCurrentUser";
 
 const Sidebar = ({ showSidebar, setShowSidebar }) => {
+  const currentUser = getCurrentUser();
+
   return (
     <div className={showSidebar ? "sidebar active" : "sidebar"}>
       {showSidebar && (
@@ -18,16 +21,28 @@ const Sidebar = ({ showSidebar, setShowSidebar }) => {
         </div>
       )}
       <ul className="sidebarItems" onClick={() => setShowSidebar(false)}>
-        <li className="sidebarItem" color="#a435f0">
-          <Link to="/login" style={{ color: "#a435f0" }}>
-            Log in
-          </Link>
-        </li>
-        <li className="sidebarItem">
-          <Link to="/signup" style={{ color: "#a435f0" }}>
-            Sign in
-          </Link>
-        </li>
+        {!currentUser ? (
+          <>
+            <li className="sidebarItem" color="#a435f0">
+              <Link to="/login" style={{ color: "#a435f0" }}>
+                Log in
+              </Link>
+            </li>
+            <li className="sidebarItem">
+              <Link to="/signup" style={{ color: "#a435f0" }}>
+                Sign in
+              </Link>
+            </li>
+          </>
+        ) : (
+          <div className="menuItemHeader">
+            <div className="navAvatar">{currentUser?.name[0]}</div>
+            <div className="menuInfo">
+              <h3>{currentUser?.name}</h3>
+              <p>{currentUser?.email}</p>
+            </div>
+          </div>
+        )}
 
         <hr />
 

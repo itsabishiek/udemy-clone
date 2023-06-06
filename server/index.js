@@ -5,6 +5,7 @@ import cors from "cors";
 
 import authRoute from "./routes/auth.route.js";
 import userRoute from "./routes/user.route.js";
+import instructorRoute from "./routes/instructor.route.js";
 import cookieParser from "cookie-parser";
 
 dotenv.config();
@@ -30,6 +31,7 @@ app.use(
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
+app.use("/api/instructor", instructorRoute);
 
 app.use((err, req, res, next) => {
   const errStatus = err.status || 500;
