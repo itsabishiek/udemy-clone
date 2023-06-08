@@ -1,0 +1,21 @@
+.courseIntent {
+  margin-top: 20px;
+}
+
+.courseIntent h3 {
+  margin-bottom: 10px;
+}
+
+.courseIntentInputs {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.courseIntentInputs input {
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  width: 100%;
+}

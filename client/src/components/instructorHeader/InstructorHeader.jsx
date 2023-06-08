@@ -15,7 +15,7 @@ const InstructorHeader = ({ showSidebar, setShowSidebar }) => {
   return (
     <div className="instructorHeader">
       <div className="instructorHeaderLeft">
-        <Link to="/">
+        <Link to="/instructor/courses">
           <img
             src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg"
             alt=""
