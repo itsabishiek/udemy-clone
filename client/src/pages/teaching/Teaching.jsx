@@ -8,10 +8,18 @@ const Teaching = () => {
 
   const teachOnUdemy = async () => {
     try {
-      await newRequest.post("/instructor", {
-        userId: currentUser?._id,
-        teachOnUdemy: true,
-      });
+      await newRequest.post(
+        "/instructor",
+        {
+          userId: currentUser?._id,
+          teachOnUdemy: true,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       currentUser["isInstructor"] = true;
       localStorage.setItem("currentUser", JSON.stringify(currentUser));

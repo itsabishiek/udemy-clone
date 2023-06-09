@@ -21,7 +21,11 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await newRequest.post("/auth/login", user);
+      const res = await newRequest.post("/auth/login", user, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       localStorage.setItem("currentUser", JSON.stringify(res.data));
       console.log(res.data);
 

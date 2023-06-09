@@ -22,7 +22,15 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await newRequest.post("/auth/register", { ...user });
+      const res = await newRequest.post(
+        "/auth/register",
+        { ...user },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       localStorage.setItem("currentUser", JSON.stringify(res.data));
       console.log(res.data);
 

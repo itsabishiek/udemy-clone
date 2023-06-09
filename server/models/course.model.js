@@ -1,4 +1,4 @@
-import { Schema } from "mongoose";
+import { Schema, model } from "mongoose";
 
 const courseSchema = new Schema({
   title: {
@@ -42,3 +42,5 @@ const courseSchema = new Schema({
     required: false,
   },
 });
+
+export default model("Course", courseSchema);
