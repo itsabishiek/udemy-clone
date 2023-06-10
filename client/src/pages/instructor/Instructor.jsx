@@ -29,6 +29,24 @@ const Instructor = () => {
           </select>
         </div>
       </div>
+
+      <div className="coursePreview">
+        <div className="coursePreviewLeft">
+          <img
+            src="https://s.udemycdn.com/course/200_H/placeholder.jpg"
+            alt=""
+          />
+          <div className="coursePreviewLeftInner">
+            <h3>Learn Typescript with ease.</h3>
+            <p>Public</p>
+          </div>
+        </div>
+
+        <div className="coursePreviewRight">
+          <h3>Finish your course</h3>
+          <div className="coursePreviewRightInner"></div>
+        </div>
+      </div>
     </div>
   );
 };

@@ -66,6 +66,77 @@
   cursor: pointer;
 }
 
+.coursePreview {
+  position: relative;
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  border: 1px solid lightgrey;
+  cursor: pointer;
+}
+
+.coursePreview:hover::after {
+  content: "Edit / manage course";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffffe5;
+  font-size: 22px;
+  font-weight: bold;
+  color: #5624d0;
+}
+
+.coursePreviewLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 100%;
+}
+
+.coursePreviewLeft img {
+  height: 120px;
+}
+
+.coursePreviewLeftInner {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.coursePreviewRight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 20px;
+}
+
+.coursePreviewRightInner {
+  position: relative;
+  width: 400px;
+  height: 8px;
+  background-color: lightgray;
+  border-radius: 15px;
+}
+
+.coursePreviewRightInner::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #a435f0;
+  width: 100px;
+  height: 8px;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
 @media (max-width: 768px) {
   .instructor {
     padding: 10px 24px;
@@ -74,6 +145,23 @@
   .instructorFilter {
     justify-content: space-between;
     gap: 10px;
+  }
+
+  .coursePreview {
+    flex-direction: column;
+  }
+
+  .coursePreviewLeft {
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .coursePreviewRight {
+    justify-content: flex-start;
+    width: 100%;
+    margin-right: 0;
+    padding: 10px;
+    margin-bottom: 10px;
   }
 }
 
@@ -84,5 +172,13 @@
 
   .instructorFilterSearch input {
     width: 150px;
+  }
+
+  .coursePreviewRight {
+    flex-direction: column;
+  }
+
+  .coursePreviewRightInner {
+    width: 100%;
   }
 }
