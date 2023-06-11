@@ -1,6 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import "./Sidebar.css";
+import { Link, useNavigate } from "react-router-dom";
 import { sidebarData } from "../../utils/SidebarData";
 import { FiChevronRight } from "react-icons/fi";
 import { GrFormClose } from "react-icons/gr";
@@ -9,9 +8,23 @@ import { MdOutlineMessage } from "react-icons/md";
 import { IoStatsChart } from "react-icons/io5";
 import { VscTools } from "react-icons/vsc";
 import getCurrentUser from "../../utils/getCurrentUser";
+import newRequest from "../../utils/newRequest";
+import "./Sidebar.css";
 
 const Sidebar = ({ showSidebar, setShowSidebar }) => {
   const currentUser = getCurrentUser();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await newRequest.post("/auth/logout");
+      localStorage.removeItem("currentUser");
+
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className={showSidebar ? "sidebar active" : "sidebar"}>
@@ -23,25 +36,33 @@ const Sidebar = ({ showSidebar, setShowSidebar }) => {
       <ul className="sidebarItems" onClick={() => setShowSidebar(false)}>
         {!currentUser ? (
           <>
-            <li className="sidebarItem" color="#a435f0">
-              <Link to="/login" style={{ color: "#a435f0" }}>
+            <li className="sidebarItem">
+              <Link to="/login" style={{ color: "#5624d0" }}>
                 Log in
               </Link>
             </li>
             <li className="sidebarItem">
-              <Link to="/signup" style={{ color: "#a435f0" }}>
+              <Link to="/signup" style={{ color: "#5624d0" }}>
                 Sign in
               </Link>
             </li>
           </>
         ) : (
-          <div className="menuItemHeader">
-            <div className="navAvatar">{currentUser?.name[0]}</div>
-            <div className="menuInfo">
-              <h3>{currentUser?.name}</h3>
-              <p>{currentUser?.email}</p>
+          <>
+            <div className="menuItemHeader">
+              <div className="navAvatar">{currentUser?.name[0]}</div>
+              <div className="menuInfo">
+                <h3>{currentUser?.name}</h3>
+                <p>{currentUser?.email}</p>
+              </div>
             </div>
-          </div>
+            <Link
+              to="/instructor/courses"
+              style={{ color: "#5624d0", fontWeight: 500, fontSize: "14px" }}
+            >
+              Switch to Instructor view
+            </Link>
+          </>
         )}
 
         <hr />
@@ -91,14 +112,22 @@ const Sidebar = ({ showSidebar, setShowSidebar }) => {
         <li className="sidebarItem">
           <Link to="/">Udemy Business</Link>
         </li>
-        <li className="sidebarItem">
-          <Link to="/teaching">Teaching on Udemy</Link>
-        </li>
+        {!currentUser?.isInstructor && (
+          <li className="sidebarItem">
+            <Link to="/teaching">Teaching on Udemy</Link>
+          </li>
+        )}
         <li className="sidebarItem">
           <Link to="/">Invite friends</Link>
         </li>
         <li className="sidebarItem">
           <Link to="/">Help</Link>
+        </li>
+
+        <hr />
+
+        <li className="sidebarItem" onClick={handleLogout}>
+          Logout
         </li>
       </ul>
     </div>

@@ -42,13 +42,13 @@
 
 .sidebarItem {
   padding: 7px 0px;
+  font-size: 14px;
 }
 
 .sidebarItem a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 14px;
 }
 
 .sidebar span {
