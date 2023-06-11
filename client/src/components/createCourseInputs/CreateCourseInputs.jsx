@@ -1,12 +1,18 @@
 import React from "react";
 import "./CreateCourseInputs.css";
 
-const CreateCourseInputs = () => {
+const CreateCourseInputs = ({ courseDetails, handleChange }) => {
   return (
     <div className="createCourseInputs">
       <div className="createCourseInput">
         <h4>Course title</h4>
-        <input type="text" placeholder="Insert your course title" />
+        <input
+          type="text"
+          placeholder="Insert your course title"
+          name="title"
+          value={courseDetails.title}
+          onChange={handleChange}
+        />
         <div className="helperText">
           Your title should be a mix of attention-grabbing, informative, and
           optimized for search
@@ -14,7 +20,13 @@ const CreateCourseInputs = () => {
       </div>
       <div className="createCourseInput">
         <h4>Course subtitle</h4>
-        <input type="text" placeholder="Insert your course subtitle" />
+        <input
+          type="text"
+          placeholder="Insert your course subtitle"
+          name="subtitle"
+          value={courseDetails.subtitle}
+          onChange={handleChange}
+        />
         <div className="helperText">
           Use 1 or 2 related keywords, and mention 3-4 of the most important
           areas that you&apos;ve covered during your course.
@@ -22,38 +34,62 @@ const CreateCourseInputs = () => {
       </div>
       <div className="createCourseInput">
         <h4>Course description</h4>
-        <textarea type="text" placeholder="Insert your course description" />
+        <textarea
+          type="text"
+          placeholder="Insert your course description"
+          name="description"
+          value={courseDetails.description}
+          onChange={handleChange}
+        />
       </div>
       <div className="createCourseInput">
         <h4>Basic Info</h4>
         <div className="basicInfo">
-          <select>
-            <option value="english">{`English (US)`}</option>
-            <option value="tamil">Tamil</option>
-            <option value="spanish">Spanish</option>
-            <option value="french">French</option>
-            <option value="japanese">Japanese</option>
+          <select
+            name="language"
+            value={courseDetails.language}
+            onChange={handleChange}
+          >
+            <option value="English (US)">{`English (US)`}</option>
+            <option value="Tamil">Tamil</option>
+            <option value="Spanish">Spanish</option>
+            <option value="French">French</option>
+            <option value="Japanese">Japanese</option>
           </select>
-          <select placeholder="-- Select level --">
-            <option value="tamil">Beginner Level</option>
-            <option value="spanish">Intermediate Level</option>
-            <option value="french">Expert Level</option>
-            <option value="japanese">All Levels</option>
+          <select
+            name="level"
+            value={courseDetails.level}
+            onChange={handleChange}
+          >
+            <option value="Beginner Level">Beginner Level</option>
+            <option value="Intermediate Level">Intermediate Level</option>
+            <option value="Expert Level">Expert Level</option>
+            <option value="All Levels">All Levels</option>
           </select>
-          <select placeholder="-- Select Category --">
-            <option value="development">Development</option>
-            <option value="business">Business</option>
-            <option value="it_software">IT & Software</option>
-            <option value="design">Design</option>
-            <option value="marketing">Marketing</option>
-            <option value="music">Music</option>
-            <option value="lifestyle">Lifestyle</option>
+          <select
+            name="category"
+            value={courseDetails.category}
+            onChange={handleChange}
+          >
+            <option value="Development">Development</option>
+            <option value="Business">Business</option>
+            <option value="IT & Software">IT & Software</option>
+            <option value="Design">Design</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Music">Music</option>
+            <option value="Lifestyle">Lifestyle</option>
           </select>
         </div>
       </div>
       <div className="createCourseInput">
         <h4>What is primarily taught in your course?</h4>
-        <input type="text" placeholder="e.g. Landscape Photography" />
+        <input
+          type="text"
+          placeholder="e.g. Landscape Photography"
+          name="primaryCourseTitle"
+          value={courseDetails.primaryCourseTitle}
+          onChange={handleChange}
+        />
       </div>
 
       <div className="createCourseUpload">

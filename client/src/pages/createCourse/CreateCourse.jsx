@@ -2,21 +2,37 @@ import React, { useState } from "react";
 import CourseType from "../../components/createMultiStepComp/CourseType";
 import CourseTitle from "../../components/createMultiStepComp/CourseTitle";
 import CourseCategory from "../../components/createMultiStepComp/CourseCategory";
-import { useNavigate } from "react-router-dom";
+import newRequest from "../../utils/newRequest";
 
 import "./CreateCourse.css";
 
 const CreateCourse = () => {
   const [page, setPage] = useState(0);
-  const router = useNavigate();
+  const [type, setType] = useState(null);
+  const [title, setTitle] = useState("");
+  const [category, setCategory] = useState("");
+
+  const handleCreateCourse = async () => {
+    try {
+      const res = await newRequest.post("/course/create", {
+        title: title,
+        type: type,
+        category: category,
+      });
+
+      window.location.href = `/course/create/${res.data._id}`;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const pageDisplay = () => {
     if (page === 0) {
-      return <CourseType />;
+      return <CourseType type={type} setType={setType} />;
     } else if (page === 1) {
-      return <CourseTitle />;
+      return <CourseTitle title={title} setTitle={setTitle} />;
     } else if (page === 2) {
-      return <CourseCategory />;
+      return <CourseCategory category={category} setCategory={setCategory} />;
     }
   };
 
@@ -44,10 +60,10 @@ const CreateCourse = () => {
 
           <button
             onClick={() => {
-              if (page === 2) {
-                router("/course/create/12332");
-              }
               setPage((prev) => prev + 1);
+              if (page === 2) {
+                handleCreateCourse();
+              }
             }}
             className="black"
           >

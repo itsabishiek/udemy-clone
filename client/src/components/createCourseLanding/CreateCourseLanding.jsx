@@ -1,7 +1,7 @@
 import React from "react";
 import CreateCourseInputs from "../createCourseInputs/CreateCourseInputs";
 
-const CreateCourseLanding = () => {
+const CreateCourseLanding = ({ courseDetails, handleChange }) => {
   return (
     <div className="createCourseContent">
       <span>
@@ -14,7 +14,10 @@ const CreateCourseLanding = () => {
         <a href="#">course title standards</a>.
       </span>
 
-      <CreateCourseInputs />
+      <CreateCourseInputs
+        courseDetails={courseDetails}
+        handleChange={handleChange}
+      />
     </div>
   );
 };

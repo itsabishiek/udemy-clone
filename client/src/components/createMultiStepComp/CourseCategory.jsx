@@ -1,7 +1,9 @@
 import React from "react";
 import "./CreateMultiStepComp.css";
 
-const CourseCategory = () => {
+const CourseCategory = ({ category, setCategory }) => {
+  console.log(category);
+
   return (
     <div className="courseCateogry">
       <h1>What category best fits the knowledge you&apos;ll share?</h1>
@@ -10,16 +12,16 @@ const CourseCategory = () => {
         later.
       </p>
 
-      <select>
-        <option value="business">Business</option>
-        <option value="development">Development</option>
-        <option value="finance_accounting">Finance & Accounting</option>
-        <option value="it_software">IT & Software</option>
-        <option value="design">Design</option>
-        <option value="marketing">Marketing</option>
-        <option value="lifestyle">Lifestyle</option>
-        <option value="music">Music</option>
-        <option value="photography_video">Photography & Video</option>
+      <select onChange={(e) => setCategory(e.target.value)}>
+        <option value="Business">Business</option>
+        <option value="Development">Development</option>
+        <option value="Finance & Accounting">Finance & Accounting</option>
+        <option value="IT & Software">IT & Software</option>
+        <option value="Design">Design</option>
+        <option value="Marketing">Marketing</option>
+        <option value="Lifestyle">Lifestyle</option>
+        <option value="Music">Music</option>
+        <option value="Photography & Video">Photography & Video</option>
       </select>
     </div>
   );

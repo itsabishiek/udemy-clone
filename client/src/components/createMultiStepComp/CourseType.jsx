@@ -4,7 +4,7 @@ import { FaListAlt } from "react-icons/fa";
 
 import "./CreateMultiStepComp.css";
 
-const CourseType = () => {
+const CourseType = ({ type, setType }) => {
   return (
     <div className="courseType">
       <h1>
@@ -12,7 +12,15 @@ const CourseType = () => {
       </h1>
 
       <div className="courseTypeCards">
-        <div className="courseTypeCard">
+        <div
+          className="courseTypeCard"
+          onClick={() => setType("Course")}
+          style={
+            type === "Course"
+              ? { border: "2px solid black" }
+              : { border: "1px solid #d1d7dc" }
+          }
+        >
           <ImDisplay fontSize="30px" />
           <h3>Course</h3>
           <p>
@@ -20,7 +28,15 @@ const CourseType = () => {
             quizzes, coding exercises, etc.
           </p>
         </div>
-        <div className="courseTypeCard">
+        <div
+          className="courseTypeCard"
+          onClick={() => setType("Practise Test")}
+          style={
+            type === "Practise Test"
+              ? { border: "2px solid black" }
+              : { border: "1px solid #d1d7dc" }
+          }
+        >
           <FaListAlt fontSize="30px" />
           <h3>Pratice Test</h3>
           <p>

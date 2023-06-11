@@ -25,19 +25,19 @@ const InstructorHeader = ({ showSidebar, setShowSidebar }) => {
       </div>
 
       <div className="instructorHeaderCenter">
-        <Link to="/" className="instructorHeaderItem">
+        <Link to="/instructor/courses" className="instructorHeaderItem">
           <FiAirplay fontSize="23px" />
           <h3>Courses</h3>
         </Link>
-        <Link to="/" className="instructorHeaderItem">
+        <Link to="/instructor/courses" className="instructorHeaderItem">
           <MdOutlineMessage fontSize="23px" />
           <h3>Communication</h3>
         </Link>
-        <Link to="/" className="instructorHeaderItem">
+        <Link to="/instructor/courses" className="instructorHeaderItem">
           <IoStatsChart fontSize="23px" />
           <h3>Performance</h3>
         </Link>
-        <Link to="/" className="instructorHeaderItem">
+        <Link to="/instructor/courses" className="instructorHeaderItem">
           <VscTools fontSize="23px" />
           <h3>Tools</h3>
         </Link>

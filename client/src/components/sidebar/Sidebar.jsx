@@ -56,12 +56,21 @@ const Sidebar = ({ showSidebar, setShowSidebar }) => {
                 <p>{currentUser?.email}</p>
               </div>
             </div>
-            <Link
-              to="/instructor/courses"
-              style={{ color: "#5624d0", fontWeight: 500, fontSize: "14px" }}
-            >
-              Switch to Instructor view
-            </Link>
+            {window.location.pathname !== "/instructor/courses" ? (
+              <Link
+                to="/instructor/courses"
+                style={{ color: "#5624d0", fontWeight: 500, fontSize: "14px" }}
+              >
+                Switch to Instructor view
+              </Link>
+            ) : (
+              <Link
+                to="/"
+                style={{ color: "#5624d0", fontWeight: 500, fontSize: "14px" }}
+              >
+                Switch to Student view
+              </Link>
+            )}
           </>
         )}
 

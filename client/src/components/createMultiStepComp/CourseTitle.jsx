@@ -1,7 +1,7 @@
 import React from "react";
 import "./CreateMultiStepComp.css";
 
-const CourseTitle = () => {
+const CourseTitle = ({ title, setTitle }) => {
   return (
     <div className="createCourseTitle">
       <h1>How about a working title?</h1>
@@ -13,6 +13,8 @@ const CourseTitle = () => {
         <input
           type="text"
           placeholder="e.g. Learn Photoshop CS6 from Scratch"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
         />
         <p>60</p>
       </div>

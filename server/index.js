@@ -6,6 +6,8 @@ import cors from "cors";
 import authRoute from "./routes/auth.route.js";
 import userRoute from "./routes/user.route.js";
 import instructorRoute from "./routes/instructor.route.js";
+import createCourseRoute from "./routes/course.route.js";
+import allCoursesRoute from "./routes/courses.route.js";
 import cookieParser from "cookie-parser";
 
 dotenv.config();
@@ -24,11 +26,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "http://127.0.0.1:5173",
-      "https://udemyion.vercel.app",
-    ],
+    origin: ["http://localhost:5173", "https://udemyion.vercel.app"],
     credentials: true,
   })
 );
@@ -36,6 +34,8 @@ app.use(
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/instructor", instructorRoute);
+app.use("/api/course", createCourseRoute);
+app.use("/api/courses", allCoursesRoute);
 
 app.use((err, req, res, next) => {
   const errStatus = err.status || 500;

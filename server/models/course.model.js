@@ -41,6 +41,14 @@ const courseSchema = new Schema({
     type: String,
     required: false,
   },
+  coursePrice: {
+    type: String,
+    required: false,
+  },
+  userId: {
+    type: String,
+    required: true,
+  },
 });
 
 export default model("Course", courseSchema);

@@ -66,6 +66,12 @@
   cursor: pointer;
 }
 
+.coursesList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
 .coursePreview {
   position: relative;
   margin-top: 25px;
