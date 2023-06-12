@@ -1,16 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlineBell } from "react-icons/ai";
 import { FiAirplay } from "react-icons/fi";
 import { MdOutlineMessage } from "react-icons/md";
 import { IoStatsChart } from "react-icons/io5";
 import { VscTools } from "react-icons/vsc";
 import { Link } from "react-router-dom";
+import { FcMenu } from "react-icons/fc";
+import getCurrentUser from "../../utils/getCurrentUser";
 
 import "./InstructorHeader.css";
-import { FcMenu } from "react-icons/fc";
+import NavMenu from "../navbar/NavMenu";
 
 const InstructorHeader = ({ showSidebar, setShowSidebar }) => {
   const toggleSidebar = () => setShowSidebar(!showSidebar);
+  const [showMenu, setShowMenu] = useState(false);
+  const currentUser = getCurrentUser();
 
   return (
     <div className="instructorHeader">
@@ -46,11 +50,21 @@ const InstructorHeader = ({ showSidebar, setShowSidebar }) => {
       <div className="instructorHeaderRight">
         <a href="/">Student</a>
         <AiOutlineBell fontSize="25px" />
-        <div className="instructorAvatar">A</div>
+        <div
+          className="instructorAvatar"
+          onClick={(e) => {
+            e.preventDefault();
+            setShowMenu(!showMenu);
+          }}
+        >
+          {currentUser?.name[0]}
+        </div>
         <div className="hammenu" onClick={toggleSidebar}>
           <FcMenu fontSize="20px" />
         </div>
       </div>
+
+      <NavMenu showMenu={showMenu} />
     </div>
   );
 };

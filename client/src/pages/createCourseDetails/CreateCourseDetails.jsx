@@ -43,7 +43,7 @@ const CreateCourseDetails = () => {
       console.log(error);
     }
   };
-  console.log(courseDetails);
+  // console.log(courseDetails);
 
   useEffect(() => {
     getCreatedCourse();
