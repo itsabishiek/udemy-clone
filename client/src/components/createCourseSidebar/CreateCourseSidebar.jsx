@@ -3,7 +3,7 @@ import { BsCircle } from "react-icons/bs";
 
 import "./CreateCourseSidebar.css";
 
-const CreateCourseSidebar = ({ setPage }) => {
+const CreateCourseSidebar = ({ setPage, handleSubmit }) => {
   return (
     <div className="createCourseSidebar">
       <div className="createSidebarItems">
@@ -52,7 +52,7 @@ const CreateCourseSidebar = ({ setPage }) => {
         </div>
       </div>
 
-      <button>Submit for review</button>
+      <button onClick={handleSubmit}>Submit for review</button>
     </div>
   );
 };

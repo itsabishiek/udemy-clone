@@ -1,7 +1,7 @@
 import React from "react";
 import "./CreateCoursePricing.css";
 
-const CreateCoursePricing = () => {
+const CreateCoursePricing = ({ courseDetails, handleChange, handleSubmit }) => {
   return (
     <div className="createCourseContent">
       <div className="createCoursePricing">
@@ -23,14 +23,18 @@ const CreateCoursePricing = () => {
             <option value="usd">USD</option>
             <option value="eur">EUR</option>
           </select>
-          <select>
+          <select
+            name="coursePrice"
+            value={courseDetails.coursePrice}
+            onChange={handleChange}
+          >
             <option value="">Select</option>
             <option value="799">₹799 (tier 1)</option>
             <option value="999">₹999 (tier 2)</option>
             <option value="1299">₹1299 (tier 3)</option>
             <option value="1699">₹1699 (tier 4)</option>
           </select>
-          <button>Save</button>
+          <button onClick={handleSubmit}>Save</button>
         </div>
       </div>
     </div>

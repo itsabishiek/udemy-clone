@@ -7,7 +7,7 @@ import CreateCoursePricing from "../../components/createCoursePricing/CreateCour
 
 import "./CreateCourseDetails.css";
 import newRequest from "../../utils/newRequest";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const CreateCourseDetails = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -27,6 +27,7 @@ const CreateCourseDetails = () => {
     coursePrice: "",
     userId: "",
   });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setCourseDetails((prev) => ({
@@ -44,6 +45,17 @@ const CreateCourseDetails = () => {
     }
   };
   // console.log(courseDetails);
+
+  const handleSubmit = async () => {
+    try {
+      await newRequest.put(`/course/create/${courseId}`, {
+        ...courseDetails,
+      });
+      navigate(`/course/create/${courseId}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     getCreatedCourse();
@@ -81,6 +93,7 @@ const CreateCourseDetails = () => {
         <CreateCoursePricing
           courseDetails={courseDetails}
           handleChange={handleChange}
+          handleSubmit={handleSubmit}
         />
       );
     }
@@ -93,13 +106,13 @@ const CreateCourseDetails = () => {
           fontSize="20px"
           onClick={() => setShowMenu(!showMenu)}
         />
-        <button>Submit for review</button>
+        <button onClick={handleSubmit}>Submit for review</button>
       </div>
       <div
         className="createCourseLeft"
         style={showMenu ? { display: "none" } : { display: "flex" }}
       >
-        <CreateCourseSidebar setPage={setPage} />
+        <CreateCourseSidebar setPage={setPage} handleSubmit={handleSubmit} />
       </div>
       <div className="createCourseRight">
         <div className="createCourseRightHeader">
