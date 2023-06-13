@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import CreateCourseSidebar from "../../components/createCourseSidebar/CreateCourseSidebar";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
 import CreateCourseLanding from "../../components/createCourseLanding/CreateCourseLanding";
 import CreateCourseIntent from "../../components/createCourseIntent/CreateCourseIntent";
 import CreateCoursePricing from "../../components/createCoursePricing/CreateCoursePricing";
+import newRequest from "../../utils/newRequest";
+import upload from "../../utils/upload";
 
 import "./CreateCourseDetails.css";
-import newRequest from "../../utils/newRequest";
-import { useNavigate, useParams } from "react-router-dom";
 
 const CreateCourseDetails = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [page, setPage] = useState(0);
   const { courseId } = useParams();
+  const [cover, setCover] = useState(null);
+  const [uploading, setUploading] = useState(false);
   const [courseDetails, setCourseDetails] = useState({
     title: "",
     type: "",
@@ -45,6 +48,21 @@ const CreateCourseDetails = () => {
     }
   };
   // console.log(courseDetails);
+
+  const handleUpload = async () => {
+    try {
+      setUploading(true);
+      const coverImage = await upload(cover);
+      await newRequest.put(`/course/create/${courseId}`, {
+        ...courseDetails,
+        coverImage,
+      });
+      window.location.href = `/course/create/${courseId}`;
+      setUploading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleSubmit = async () => {
     try {
@@ -86,6 +104,10 @@ const CreateCourseDetails = () => {
         <CreateCourseLanding
           courseDetails={courseDetails}
           handleChange={handleChange}
+          cover={cover}
+          setCover={setCover}
+          handleUpload={handleUpload}
+          uploading={uploading}
         />
       );
     } else if (page === 2) {

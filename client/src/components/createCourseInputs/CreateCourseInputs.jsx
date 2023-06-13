@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./CreateCourseInputs.css";
 
-const CreateCourseInputs = ({ courseDetails, handleChange }) => {
+const CreateCourseInputs = ({
+  courseDetails,
+  handleChange,
+  cover,
+  setCover,
+  handleUpload,
+  uploading,
+}) => {
+  const coverRef = useRef();
+
   return (
     <div className="createCourseInputs">
       <div className="createCourseInput">
@@ -95,17 +104,37 @@ const CreateCourseInputs = ({ courseDetails, handleChange }) => {
       <div className="createCourseUpload">
         <h4>Course image</h4>
         <div className="selectImage">
-          <img
-            src="https://s.udemycdn.com/course/750x422/placeholder.jpg"
-            alt=""
-          />
+          {!courseDetails.coverImage ? (
+            <img
+              src="https://s.udemycdn.com/course/750x422/placeholder.jpg"
+              alt=""
+              onClick={() => coverRef.current.click()}
+            />
+          ) : (
+            <img
+              src={courseDetails.coverImage}
+              alt=""
+              onClick={() => coverRef.current.click()}
+            />
+          )}
           <div className="imgSelect">
             <span>
               Upload your course image here. It must meet our course image
               quality standards to be accepted. Important guidelines: 750x422
               pixels; .jpg, .jpeg,. gif, or .png. no text on the image.
             </span>
-            <input type="file" />
+            <input
+              ref={coverRef}
+              type="file"
+              onChange={(e) => setCover(e.target.files[0])}
+            />
+
+            <div className="imgUpload">
+              <button onClick={handleUpload}>
+                {uploading ? "Uploading" : "Upload file"}
+              </button>
+              <p>{!cover ? "No file chosen" : cover?.name}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -125,6 +154,10 @@ const CreateCourseInputs = ({ courseDetails, handleChange }) => {
               video is well-made. Learn how to make your promo video awesome!
             </span>
             <input type="file" />
+            <div className="imgUpload">
+              <button>{uploading ? "Uploading" : "Upload file"}</button>
+              <p>No file chosen</p>
+            </div>
           </div>
         </div>
       </div>

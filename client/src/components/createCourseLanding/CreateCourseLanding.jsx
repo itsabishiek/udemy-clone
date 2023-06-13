@@ -1,7 +1,14 @@
 import React from "react";
 import CreateCourseInputs from "../createCourseInputs/CreateCourseInputs";
 
-const CreateCourseLanding = ({ courseDetails, handleChange }) => {
+const CreateCourseLanding = ({
+  courseDetails,
+  handleChange,
+  cover,
+  setCover,
+  handleUpload,
+  uploading,
+}) => {
   return (
     <div className="createCourseContent">
       <span>
@@ -17,6 +24,10 @@ const CreateCourseLanding = ({ courseDetails, handleChange }) => {
       <CreateCourseInputs
         courseDetails={courseDetails}
         handleChange={handleChange}
+        cover={cover}
+        setCover={setCover}
+        handleUpload={handleUpload}
+        uploading={uploading}
       />
     </div>
   );
