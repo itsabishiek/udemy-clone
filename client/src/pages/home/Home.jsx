@@ -1,11 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import Trusted from "../../components/trusted/Trusted";
 import CourseCard from "../../components/courseCard/CourseCard";
 import Slide from "../../components/slide/Slide";
+import newRequest from "../../utils/newRequest";
+import getCurrentUser from "../../utils/getCurrentUser";
+
 import "./Home.css";
 
 const Home = () => {
+  const currentUser = getCurrentUser();
+  const [courses, setCourses] = useState();
+
+  const getCourses = async () => {
+    try {
+      const courses = await newRequest.get(
+        `/courses?userId=${currentUser._id}`
+      );
+      setCourses(courses.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getCourses();
+  }, []);
+
   return (
     <div className="home">
       <div className="homeBanner">
@@ -43,15 +64,9 @@ const Home = () => {
             Students are viewing
           </h2>
           <Slide>
-            <CourseCard />
-            <CourseCard />
-            <CourseCard />
-            <CourseCard />
-            <CourseCard />
-            <CourseCard />
-            <CourseCard />
-            <CourseCard />
-            <CourseCard />
+            {courses?.map((course) => (
+              <CourseCard key={course._id} course={course} />
+            ))}
           </Slide>
         </div>
 

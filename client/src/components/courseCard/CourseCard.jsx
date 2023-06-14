@@ -3,16 +3,11 @@ import { AiFillStar } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import "./CourseCard.css";
 
-const CourseCard = () => {
+const CourseCard = ({ course }) => {
   return (
-    <Link to="/course/123" className="courseCard">
-      <img
-        src="https://img-c.udemycdn.com/course/240x135/1362070_b9a1_2.jpg"
-        alt=""
-      />
-      <h3 className="courseTitle">
-        {`React - The Complete Guide (incl Hooks, React Router)`}
-      </h3>
+    <Link to={`/course/${course._id}`} className="courseCard">
+      <img src={course?.coverImage} alt="" />
+      <h3 className="courseTitle">{course.title}</h3>
       <p className="courseAuthor">Steve Harrington</p>
       <div className="rating">
         <span className="ratingCount">4.9</span>
@@ -27,7 +22,7 @@ const CourseCard = () => {
       </div>
       <div className="coursePrice">
         <h3>₹399</h3>
-        <h3 className="courseActualPrice">₹3999</h3>
+        <h3 className="courseActualPrice">₹{course.coursePrice}</h3>
       </div>
     </Link>
   );

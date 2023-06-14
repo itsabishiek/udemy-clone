@@ -41,7 +41,7 @@ const CreateCourseDetails = () => {
 
   const getCreatedCourse = async () => {
     try {
-      const res = await newRequest.get(`/course/create/${courseId}`);
+      const res = await newRequest.get(`/course/${courseId}`);
       setCourseDetails(res.data);
     } catch (error) {
       console.log(error);
@@ -53,7 +53,7 @@ const CreateCourseDetails = () => {
     try {
       setUploading(true);
       const coverImage = await upload(cover);
-      await newRequest.put(`/course/create/${courseId}`, {
+      await newRequest.put(`/course/${courseId}`, {
         ...courseDetails,
         coverImage,
       });
@@ -66,7 +66,7 @@ const CreateCourseDetails = () => {
 
   const handleSubmit = async () => {
     try {
-      await newRequest.put(`/course/create/${courseId}`, {
+      await newRequest.put(`/course/${courseId}`, {
         ...courseDetails,
       });
       navigate(`/course/create/${courseId}`);

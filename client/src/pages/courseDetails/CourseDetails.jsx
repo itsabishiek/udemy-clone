@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   AiFillStar,
   AiOutlineCalendar,
@@ -14,21 +14,34 @@ import {
 import { BsCheck2, BsCode, BsPlayBtn } from "react-icons/bs";
 import { RiFolderDownloadLine } from "react-icons/ri";
 import { FaMobileAlt } from "react-icons/fa";
+import { Link, useParams } from "react-router-dom";
+import newRequest from "../../utils/newRequest";
+
 import "./CourseDetails.css";
-import { Link } from "react-router-dom";
 
 const CourseDetails = () => {
+  const { courseId } = useParams();
+  const [courseDetails, setCourseDetails] = useState();
+
+  const getCourseDetails = async () => {
+    try {
+      const courseDetails = await newRequest.get(`/course/${courseId}`);
+      setCourseDetails(courseDetails.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getCourseDetails();
+  }, []);
+
   return (
     <div className="courseDetails">
       <div className="courseDetailsHeader">
         <div className="courseDetailsHeaderInner">
-          <h1 className="courseTitle">
-            {`React - The Complete Guide (incl Hooks, React Router, Redux)`}
-          </h1>
-          <p className="courseShortDesc">
-            Dive in and learn React.js from scratch! Learn Reactjs, Hooks,
-            Redux, React Routing, Animations, Next.js and way more!
-          </p>
+          <h1 className="courseTitle">{courseDetails?.title}</h1>
+          <p className="courseShortDesc">{courseDetails?.subtitle}</p>
           <div className="courseRating">
             <span className="ratingCount">4.9</span>
             <div>
@@ -57,7 +70,7 @@ const CourseDetails = () => {
             </div>
             <div className="courseOthersItem">
               <MdLanguage />
-              <p>English</p>
+              <p>{courseDetails?.language}</p>
             </div>
             <div className="courseOthersItem">
               <MdSubtitles />
@@ -160,38 +173,14 @@ const CourseDetails = () => {
 
           <div className="courseDescription">
             <h2>Description</h2>
-            <p>
-              {`This course is fully up-to-date with React 18 (the latest version
-              of React)! It was completely updated and re-recorded from the
-              ground up - it teaches the very latest version of React with all
-              the core, modern features you need to know! --- This course also
-              comes with two paths which you can take: The "complete" path (full
-              >40h course) and the "summary" path (~4h summary module) - you can
-              choose the path that best fits your time requirements! :-) ---
-              React.js is THE most popular JavaScript library you can use and
-              learn these days to build modern, reactive user interfaces for the
-              web. This course teaches you React in-depth, from the ground up,
-              step by step by diving into all the core basics, exploring tons of
-              examples and also introducing you to advanced concepts as well.
-              You'll get all the theory, tons of examples and demos, assignments
-              and exercises and tons of important knowledge that is skipped by
-              most other resources - after all, there is a reason why this
-              course is that huge! :) And in case you don't even know why you
-              would want to learn React and you're just here because of some ad
-              or "the algorithm" - no worries: ReactJS is a key technology as a
-              web developer and in this course I will also explain WHY it's that
-              important!`}
-            </p>
+            <p>{courseDetails?.description}</p>
           </div>
         </div>
 
         <div className="courseContentRightWrapper">
           <div className="courseContentRight">
             <div className="courseContentRightImg">
-              <img
-                src="	https://img-c.udemycdn.com/course/240x135/1362070_b9a1_2.jpg"
-                alt=""
-              />
+              <img src={courseDetails?.coverImage} alt="" />
             </div>
 
             <div className="courseDetailsHeaderMobile">
@@ -270,7 +259,7 @@ const CourseDetails = () => {
               </div>
 
               <div className="coursePricing">
-                <h3>₹3,399</h3>
+                <h3>₹{courseDetails?.coursePrice}</h3>
                 <button>Buy this course</button>
                 <p className="courseHelperText">
                   30-Days Money-Back Guarantee.
