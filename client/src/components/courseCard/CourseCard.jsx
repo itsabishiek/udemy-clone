@@ -21,8 +21,8 @@ const CourseCard = ({ course }) => {
         <span>{`(185,205)`}</span>
       </div>
       <div className="coursePrice">
-        <h3>₹399</h3>
-        <h3 className="courseActualPrice">₹{course.coursePrice}</h3>
+        <h3>₹{course.coursePrice}</h3>
+        <h3 className="courseActualPrice">₹1399</h3>
       </div>
     </Link>
   );

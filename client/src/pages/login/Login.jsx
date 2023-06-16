@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import "./Login.css";
+import { Link } from "react-router-dom";
 import newRequest from "../../utils/newRequest";
+
+import "./Login.css";
 
 const Login = () => {
   const [user, setUser] = useState({
@@ -9,7 +10,6 @@ const Login = () => {
     password: "",
   });
   const [error, setError] = useState("");
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setUser((prev) => ({
@@ -29,7 +29,7 @@ const Login = () => {
       localStorage.setItem("currentUser", JSON.stringify(res.data));
       console.log(res.data);
 
-      navigate("/");
+      window.location.href = "/";
     } catch (error) {
       console.log(error);
       setError(error.response.data);

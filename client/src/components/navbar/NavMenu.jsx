@@ -1,18 +1,18 @@
 import React from "react";
 import getCurrentUser from "../../utils/getCurrentUser";
 import newRequest from "../../utils/newRequest";
-import { Link, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const NavMenu = ({ showMenu }) => {
   const currentUser = getCurrentUser();
-  const navigate = useNavigate();
+  const { courseId } = useParams();
 
   const handleLogout = async () => {
     try {
       await newRequest.post("/auth/logout");
       localStorage.removeItem("currentUser");
 
-      navigate("/");
+      window.location.href = "/";
     } catch (error) {
       console.log(error);
     }
@@ -33,12 +33,16 @@ const NavMenu = ({ showMenu }) => {
 
       <hr />
 
-      <Link to="/instructor/courses" className="menuItem">
-        Instructor Dashboard
-      </Link>
-      <Link to="#" className="menuItem" onClick={handleLogout}>
+      <a href="/instructor/courses" className="menuItem">
+        {window.location.pathname === "/instructor/courses" ||
+        window.location.pathname === "/course/create" ||
+        window.location.pathname === `/course/create/${courseId}`
+          ? "Student"
+          : "Instructor Dashboard"}
+      </a>
+      <a href="#" className="menuItem" onClick={handleLogout}>
         Logout
-      </Link>
+      </a>
     </div>
   );
 };

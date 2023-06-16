@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
-import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  Outlet,
+  RouterProvider,
+  createBrowserRouter,
+  useParams,
+} from "react-router-dom";
 import Home from "./pages/home/Home";
 import Sidebar from "./components/sidebar/Sidebar";
 import Login from "./pages/login/Login";
@@ -17,11 +22,14 @@ import "./App.css";
 
 const App = () => {
   const [showSidebar, setShowSidebar] = useState(false);
+  const { courseId } = useParams();
 
   const Layout = () => {
     return (
       <div>
-        {window.location.pathname !== "/instructor/courses" ? (
+        {window.location.pathname !== "/instructor/courses" &&
+        window.location.pathname !== "/course/create" &&
+        window.location.pathname !== `/course/create/${courseId}` ? (
           <Navbar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
         ) : (
           <InstructorHeader
