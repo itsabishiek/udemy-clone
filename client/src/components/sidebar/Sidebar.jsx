@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { sidebarData } from "../../utils/SidebarData";
 import { FiChevronRight } from "react-icons/fi";
 import { GrFormClose } from "react-icons/gr";
@@ -13,14 +13,13 @@ import "./Sidebar.css";
 
 const Sidebar = ({ showSidebar, setShowSidebar }) => {
   const currentUser = getCurrentUser();
-  const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
       await newRequest.post("/auth/logout");
       localStorage.removeItem("currentUser");
 
-      navigate("/");
+      window.location.href = "/";
     } catch (error) {
       console.log(error);
     }
@@ -57,19 +56,19 @@ const Sidebar = ({ showSidebar, setShowSidebar }) => {
               </div>
             </div>
             {window.location.pathname !== "/instructor/courses" ? (
-              <Link
-                to="/instructor/courses"
+              <a
+                href="/instructor/courses"
                 style={{ color: "#5624d0", fontWeight: 500, fontSize: "14px" }}
               >
                 Switch to Instructor view
-              </Link>
+              </a>
             ) : (
-              <Link
-                to="/"
+              <a
+                href="/"
                 style={{ color: "#5624d0", fontWeight: 500, fontSize: "14px" }}
               >
                 Switch to Student view
-              </Link>
+              </a>
             )}
           </>
         )}
