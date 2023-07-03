@@ -51,29 +51,38 @@ const Instructor = () => {
       </div>
 
       <div className="coursesList">
-        {courses.map((course) => (
-          <Link
-            to={`/course/create/${course._id}`}
-            className="coursePreview"
-            key={course._id}
-          >
-            <div className="coursePreviewLeft">
-              <img
-                src="https://s.udemycdn.com/course/200_H/placeholder.jpg"
-                alt=""
-              />
-              <div className="coursePreviewLeftInner">
-                <h3>{course.title}</h3>
-                <p>Public</p>
-              </div>
-            </div>
+        {!courses ? (
+          <div className="coursesFallback">
+            <h3>Created courses will appear here.</h3>
+            <Link to="/course/create">Start Course</Link>
+          </div>
+        ) : (
+          <>
+            {courses.map((course) => (
+              <Link
+                to={`/course/create/${course._id}`}
+                className="coursePreview"
+                key={course._id}
+              >
+                <div className="coursePreviewLeft">
+                  <img
+                    src="https://s.udemycdn.com/course/200_H/placeholder.jpg"
+                    alt=""
+                  />
+                  <div className="coursePreviewLeftInner">
+                    <h3>{course.title}</h3>
+                    <p>Public</p>
+                  </div>
+                </div>
 
-            <div className="coursePreviewRight">
-              <h3>Finish your course</h3>
-              <div className="coursePreviewRightInner"></div>
-            </div>
-          </Link>
-        ))}
+                <div className="coursePreviewRight">
+                  <h3>Finish your course</h3>
+                  <div className="coursePreviewRightInner"></div>
+                </div>
+              </Link>
+            ))}
+          </>
+        )}
       </div>
     </div>
   );

@@ -4,19 +4,15 @@ import Trusted from "../../components/trusted/Trusted";
 import CourseCard from "../../components/courseCard/CourseCard";
 import Slide from "../../components/slide/Slide";
 import newRequest from "../../utils/newRequest";
-import getCurrentUser from "../../utils/getCurrentUser";
 
 import "./Home.css";
 
 const Home = () => {
-  const currentUser = getCurrentUser();
   const [courses, setCourses] = useState();
 
   const getCourses = async () => {
     try {
-      const courses = await newRequest.get(
-        `/courses?userId=${currentUser._id}`
-      );
+      const courses = await newRequest.get(`/courses`);
       setCourses(courses.data);
     } catch (error) {
       console.log(error);

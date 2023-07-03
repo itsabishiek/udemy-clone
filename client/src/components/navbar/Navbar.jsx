@@ -3,7 +3,7 @@ import { AiOutlineBell, AiOutlineHeart, AiOutlineSearch } from "react-icons/ai";
 import { GrLanguage } from "react-icons/gr";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { FcMenu } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import getCurrentUser from "../../utils/getCurrentUser";
 
 import "./Navbar.css";
@@ -11,8 +11,16 @@ import NavMenu from "./NavMenu";
 
 const Navbar = ({ showSidebar, setShowSidebar }) => {
   const toggleSidebar = () => setShowSidebar(!showSidebar);
-  const [showMenu, setShowMenu] = useState(false);
   const currentUser = getCurrentUser();
+  const [showMenu, setShowMenu] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    if (e.code === "Enter" || e.keyCode === 13) {
+      navigate(`/courses?search=${searchInput}`);
+    }
+  };
 
   return (
     <nav className="navbar">
@@ -31,8 +39,15 @@ const Navbar = ({ showSidebar, setShowSidebar }) => {
 
       <div className="searchInput">
         <AiOutlineSearch fontSize="20px" />
-        <input type="text" placeholder="Search for anything" />
+        <input
+          type="text"
+          placeholder="Search for anything"
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
+          onKeyDown={handleSubmit}
+        />
       </div>
+
       <Link to="/">Udemy Business</Link>
       {!currentUser?.isInstructor ? (
         <Link to="/teaching">Teach on Udemy</Link>

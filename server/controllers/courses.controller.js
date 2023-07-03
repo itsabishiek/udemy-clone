@@ -6,7 +6,7 @@ const getAllCourses = async (req, res, next) => {
     ...(q.userId && { userId: q.userId }),
     ...(q.category && { category: q.category }),
     ...((q.min || q.max) && {
-      price: {
+      coursePrice: {
         ...(q.min && { $gt: q.min }),
         ...(q.max && { $lt: q.max }),
       },

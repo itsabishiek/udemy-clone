@@ -42,7 +42,7 @@ const courseSchema = new Schema({
     required: false,
   },
   coursePrice: {
-    type: String,
+    type: Number,
     required: false,
   },
   userId: {

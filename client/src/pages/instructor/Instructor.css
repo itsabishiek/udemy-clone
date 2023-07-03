@@ -72,6 +72,23 @@
   gap: 10px;
 }
 
+.coursesFallback {
+  display: flex;
+  height: 250px;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.coursesFallback a {
+  background-color: #a435f0;
+  color: #fff;
+  padding: 10px 12px;
+  font-weight: bold;
+}
+
 .coursePreview {
   position: relative;
   margin-top: 25px;

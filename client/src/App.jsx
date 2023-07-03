@@ -19,6 +19,7 @@ import CreateCourse from "./pages/createCourse/CreateCourse";
 import CreateCourseDetails from "./pages/createCourseDetails/CreateCourseDetails";
 
 import "./App.css";
+import Courses from "./pages/courses/Courses";
 
 const App = () => {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -82,6 +83,10 @@ const App = () => {
         {
           path: "/course/create/:courseId",
           element: <CreateCourseDetails />,
+        },
+        {
+          path: "/courses",
+          element: <Courses />,
         },
       ],
     },
