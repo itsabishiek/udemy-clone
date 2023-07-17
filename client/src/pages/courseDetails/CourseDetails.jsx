@@ -22,11 +22,17 @@ import "./CourseDetails.css";
 const CourseDetails = () => {
   const { courseId } = useParams();
   const [courseDetails, setCourseDetails] = useState();
+  const [courseAuthor, setCourseAuthor] = useState();
 
   const getCourseDetails = async () => {
     try {
       const courseDetails = await newRequest.get(`/course/${courseId}`);
+      const courseAuthor = await newRequest.get(
+        `/users/${courseDetails.data.userId}`
+      );
+
       setCourseDetails(courseDetails.data);
+      setCourseAuthor(courseAuthor.data);
     } catch (error) {
       console.log(error);
     }
@@ -35,6 +41,8 @@ const CourseDetails = () => {
   useEffect(() => {
     getCourseDetails();
   }, []);
+
+  console.log(courseAuthor);
 
   return (
     <div className="courseDetails">
@@ -60,7 +68,10 @@ const CourseDetails = () => {
           </div>
 
           <div className="courseAuthor">
-            Created by <p>Steve Harrington</p>
+            Created by{" "}
+            <Link to={`/instructor/${courseAuthor?._id}`}>
+              {courseAuthor?.name}
+            </Link>
           </div>
 
           <div className="courseDetailsOthers">

@@ -49,7 +49,7 @@
   font-size: 14px;
 }
 
-.courseAuthor p {
+.courseAuthor a {
   color: #cec0fc;
   cursor: pointer;
 }
