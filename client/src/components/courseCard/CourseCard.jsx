@@ -7,8 +7,12 @@ const CourseCard = ({ course }) => {
   return (
     <Link to={`/course/${course._id}`} className="courseCard">
       <img src={course?.coverImage} alt="" />
-      <h3 className="courseTitle">{course.title}</h3>
-      <p className="courseAuthor">Steve Harrington</p>
+      <h3 className="courseTitle">
+        {course.title.length > 50
+          ? `${course.title.slice(0, 50)}...`
+          : course.title}
+      </h3>
+      <p className="courseAuthor">{course.authorName}</p>
       <div className="rating">
         <span className="ratingCount">4.9</span>
         <div>

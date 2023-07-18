@@ -98,7 +98,7 @@ const Courses = () => {
                       <h3>₹{course.coursePrice}</h3>
                     </div>
                     <p>{course.subtitle}</p>
-                    <span className="coursesAuthor">{`Steve Harrington`}</span>
+                    <span className="coursesAuthor">{course.authorName}</span>
 
                     <div className="courseRating">
                       <span className="ratingCount">4.9</span>

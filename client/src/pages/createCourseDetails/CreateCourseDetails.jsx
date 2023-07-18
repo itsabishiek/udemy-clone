@@ -7,10 +7,12 @@ import CreateCourseIntent from "../../components/createCourseIntent/CreateCourse
 import CreateCoursePricing from "../../components/createCoursePricing/CreateCoursePricing";
 import newRequest from "../../utils/newRequest";
 import upload from "../../utils/upload";
+import getCurrentUser from "../../utils/getCurrentUser";
 
 import "./CreateCourseDetails.css";
 
 const CreateCourseDetails = () => {
+  const currentUser = getCurrentUser();
   const [showMenu, setShowMenu] = useState(false);
   const [page, setPage] = useState(0);
   const { courseId } = useParams();
@@ -29,6 +31,7 @@ const CreateCourseDetails = () => {
     promoVideo: "",
     coursePrice: "",
     userId: "",
+    authorName: "",
   });
   const navigate = useNavigate();
 
@@ -68,6 +71,7 @@ const CreateCourseDetails = () => {
     try {
       await newRequest.put(`/course/${courseId}`, {
         ...courseDetails,
+        authorName: currentUser?.name,
       });
       navigate(`/course/create/${courseId}`);
     } catch (error) {

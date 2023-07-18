@@ -40,9 +40,10 @@ const CourseDetails = () => {
 
   useEffect(() => {
     getCourseDetails();
+    scroll(0, 0);
   }, []);
 
-  console.log(courseAuthor);
+  // console.log(courseAuthor);
 
   return (
     <div className="courseDetails">

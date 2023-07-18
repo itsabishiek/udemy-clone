@@ -49,6 +49,10 @@ const courseSchema = new Schema({
     type: String,
     required: true,
   },
+  authorName: {
+    type: String,
+    required: false,
+  },
 });
 
 export default model("Course", courseSchema);
