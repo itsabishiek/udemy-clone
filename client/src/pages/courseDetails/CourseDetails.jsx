@@ -197,13 +197,8 @@ const CourseDetails = () => {
 
             <div className="courseDetailsHeaderMobile">
               <div className="courseDetailsHeaderInner">
-                <h1 className="courseTitle">
-                  {`React - The Complete Guide (incl Hooks, React Router, Redux)`}
-                </h1>
-                <p className="courseShortDesc">
-                  Dive in and learn React.js from scratch! Learn Reactjs, Hooks,
-                  Redux, React Routing, Animations, Next.js and way more!
-                </p>
+                <h1 className="courseTitle">{courseDetails?.title}</h1>
+                <p className="courseShortDesc">{courseDetails?.subtitle}</p>
                 <div className="courseRating">
                   <span className="ratingCount">4.9</span>
                   <div>
@@ -222,7 +217,7 @@ const CourseDetails = () => {
                 </div>
 
                 <div className="courseAuthor">
-                  Created by <p>Steve Harrington</p>
+                  Created by <p>{courseAuthor?.name}</p>
                 </div>
 
                 <div className="courseDetailsOthers">
