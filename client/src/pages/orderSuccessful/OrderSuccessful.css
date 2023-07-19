@@ -1,0 +1,20 @@
+.orderSuccessful {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 72px);
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.orderSuccessful img {
+  height: 250px;
+}
+
+.orderSuccessful h2 {
+  opacity: 0.7;
+}
+
+.orderSuccessful p {
+  opacity: 0.5;
+}

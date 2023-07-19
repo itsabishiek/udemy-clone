@@ -267,7 +267,9 @@ const CourseDetails = () => {
 
               <div className="coursePricing">
                 <h3>₹{courseDetails?.coursePrice}</h3>
-                <button>Buy this course</button>
+                <Link to={`/make-payment/${courseId}`}>
+                  <button>Buy this course</button>
+                </Link>
                 <p className="courseHelperText">
                   30-Days Money-Back Guarantee.
                 </p>

@@ -20,6 +20,9 @@ import CreateCourseDetails from "./pages/createCourseDetails/CreateCourseDetails
 
 import "./App.css";
 import Courses from "./pages/courses/Courses";
+import OrderSuccessful from "./pages/orderSuccessful/OrderSuccessful";
+import Pay from "./pages/pay/Pay";
+import CourseEnrolled from "./pages/courseEnrolled/CourseEnrolled";
 
 const App = () => {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -87,6 +90,18 @@ const App = () => {
         {
           path: "/courses",
           element: <Courses />,
+        },
+        {
+          path: "/make-payment/:courseId",
+          element: <Pay />,
+        },
+        {
+          path: "/order-successful",
+          element: <OrderSuccessful />,
+        },
+        {
+          path: "/course-enrolled",
+          element: <CourseEnrolled />,
         },
       ],
     },

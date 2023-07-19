@@ -33,13 +33,20 @@ const NavMenu = ({ showMenu }) => {
 
       <hr />
 
-      <a href="/instructor/courses" className="menuItem">
-        {window.location.pathname === "/instructor/courses" ||
-        window.location.pathname === "/course/create" ||
-        window.location.pathname === `/course/create/${courseId}`
-          ? "Student"
-          : "Instructor Dashboard"}
-      </a>
+      {currentUser.isInstructor ? (
+        <a href="/instructor/courses" className="menuItem">
+          {window.location.pathname === "/instructor/courses" ||
+          window.location.pathname === "/course/create" ||
+          window.location.pathname === `/course/create/${courseId}`
+            ? "Student"
+            : "Instructor Dashboard"}
+        </a>
+      ) : (
+        <a href="/teaching" className="menuItem">
+          Teach on Udemy
+        </a>
+      )}
+
       <a href="#" className="menuItem" onClick={handleLogout}>
         Logout
       </a>

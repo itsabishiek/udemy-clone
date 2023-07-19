@@ -8,6 +8,7 @@ import userRoute from "./routes/user.route.js";
 import instructorRoute from "./routes/instructor.route.js";
 import createCourseRoute from "./routes/course.route.js";
 import allCoursesRoute from "./routes/courses.route.js";
+import orderRoute from "./routes/order.route.js";
 import cookieParser from "cookie-parser";
 
 dotenv.config();
@@ -36,6 +37,7 @@ app.use("/api/users", userRoute);
 app.use("/api/instructor", instructorRoute);
 app.use("/api/course", createCourseRoute);
 app.use("/api/courses", allCoursesRoute);
+app.use("/api/orders", orderRoute);
 
 app.use((err, req, res, next) => {
   const errStatus = err.status || 500;
