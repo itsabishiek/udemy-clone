@@ -33,6 +33,10 @@ const NavMenu = ({ showMenu }) => {
 
       <hr />
 
+      <a href="/course-enrolled" className="menuItem">
+        Courses Enrolled
+      </a>
+
       {currentUser.isInstructor ? (
         <a href="/instructor/courses" className="menuItem">
           {window.location.pathname === "/instructor/courses" ||

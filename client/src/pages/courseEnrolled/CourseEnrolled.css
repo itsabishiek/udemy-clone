@@ -1,0 +1,43 @@
+.courseEnrolled {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 72px);
+  max-width: 1000px;
+  margin: 0px auto;
+  padding: 25px;
+  background-color: #f5f0f7;
+}
+
+.courseEnrolled h2 {
+  color: #be59e6;
+  margin-bottom: 30px;
+}
+
+.enrolledCoursesItems {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.enrolledCoursesItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 10px;
+  transition: 0.2s;
+}
+
+.enrolledCoursesItem:hover {
+  background-color: #ae68ca;
+  color: #f5f0f7;
+}
+
+.enrolledCoursesLeft {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.enrolledCoursesItem img {
+  height: 60px;
+}

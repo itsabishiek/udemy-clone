@@ -22,10 +22,11 @@ const register = async (req, res, next) => {
     );
 
     const { password, ...info } = newUser._doc;
+    const expiryDate = new Date(Number(new Date()) + 2592000000);
     res
       .cookie("accessToken", token, {
         httpOnly: true,
-        expiresIn: "30d",
+        expires: expiryDate,
         sameSite: "none",
         secure: true,
       })
@@ -53,10 +54,11 @@ const login = async (req, res, next) => {
     );
 
     const { password, ...info } = user._doc;
+    const expiryDate = new Date(Number(new Date()) + 2592000000);
     res
       .cookie("accessToken", token, {
         httpOnly: true,
-        expiresIn: "30d",
+        expires: expiryDate,
         sameSite: "none",
         secure: true,
       })

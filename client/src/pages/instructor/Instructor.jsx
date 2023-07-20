@@ -51,7 +51,7 @@ const Instructor = () => {
       </div>
 
       <div className="coursesList">
-        {!courses ? (
+        {courses.length === 0 ? (
           <div className="coursesFallback">
             <h3>Created courses will appear here.</h3>
             <Link to="/course/create">Start Course</Link>
