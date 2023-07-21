@@ -126,6 +126,9 @@ const Sidebar = ({ showSidebar, setShowSidebar }) => {
           </li>
         )}
         <li className="sidebarItem">
+          <Link to="/course-enrolled">My Learning</Link>
+        </li>
+        <li className="sidebarItem">
           <Link to="/">Invite friends</Link>
         </li>
         <li className="sidebarItem">

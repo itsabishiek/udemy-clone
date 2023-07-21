@@ -53,6 +53,14 @@ const courseSchema = new Schema({
     type: String,
     required: false,
   },
+  totalStars: {
+    type: Number,
+    default: 0,
+  },
+  starNumber: {
+    type: Number,
+    default: 0,
+  },
 });
 
 export default model("Course", courseSchema);

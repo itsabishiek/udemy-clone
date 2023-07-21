@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
 import cors from "cors";
 
 import authRoute from "./routes/auth.route.js";
@@ -9,7 +10,7 @@ import instructorRoute from "./routes/instructor.route.js";
 import createCourseRoute from "./routes/course.route.js";
 import allCoursesRoute from "./routes/courses.route.js";
 import orderRoute from "./routes/order.route.js";
-import cookieParser from "cookie-parser";
+import reviewRoute from "./routes/review.route.js";
 
 dotenv.config();
 const app = express();
@@ -38,6 +39,7 @@ app.use("/api/instructor", instructorRoute);
 app.use("/api/course", createCourseRoute);
 app.use("/api/courses", allCoursesRoute);
 app.use("/api/orders", orderRoute);
+app.use("/api/reviews", reviewRoute);
 
 app.use((err, req, res, next) => {
   const errStatus = err.status || 500;

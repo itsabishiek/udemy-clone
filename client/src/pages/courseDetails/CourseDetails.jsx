@@ -18,6 +18,7 @@ import { Link, useParams } from "react-router-dom";
 import newRequest from "../../utils/newRequest";
 
 import "./CourseDetails.css";
+import Review from "../../components/review/Review";
 
 const CourseDetails = () => {
   const { courseId } = useParams();
@@ -187,6 +188,8 @@ const CourseDetails = () => {
             <h2>Description</h2>
             <p>{courseDetails?.description}</p>
           </div>
+
+          <Review />
         </div>
 
         <div className="courseContentRightWrapper">

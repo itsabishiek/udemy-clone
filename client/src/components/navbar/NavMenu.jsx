@@ -34,7 +34,7 @@ const NavMenu = ({ showMenu }) => {
       <hr />
 
       <a href="/course-enrolled" className="menuItem">
-        Courses Enrolled
+        My Learning
       </a>
 
       {currentUser.isInstructor ? (
