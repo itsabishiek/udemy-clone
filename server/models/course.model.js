@@ -61,6 +61,10 @@ const courseSchema = new Schema({
     type: Number,
     default: 0,
   },
+  requirements: {
+    type: [String],
+    required: false,
+  },
 });
 
 export default model("Course", courseSchema);

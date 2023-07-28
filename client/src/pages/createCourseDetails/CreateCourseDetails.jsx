@@ -17,6 +17,7 @@ const CreateCourseDetails = () => {
   const [page, setPage] = useState(0);
   const { courseId } = useParams();
   const [cover, setCover] = useState(null);
+  const [requirements, setRequirements] = useState([""]);
   const [uploading, setUploading] = useState(false);
   const [courseDetails, setCourseDetails] = useState({
     title: "",
@@ -46,6 +47,7 @@ const CreateCourseDetails = () => {
     try {
       const res = await newRequest.get(`/course/${courseId}`);
       setCourseDetails(res.data);
+      setRequirements([...courseDetails.requirements]);
     } catch (error) {
       console.log(error);
     }
@@ -72,6 +74,7 @@ const CreateCourseDetails = () => {
       await newRequest.put(`/course/${courseId}`, {
         ...courseDetails,
         authorName: currentUser?.name,
+        requirements,
       });
       navigate(`/course/create/${courseId}`);
     } catch (error) {
@@ -95,14 +98,20 @@ const CreateCourseDetails = () => {
       promoVideo: courseDetails.promoVideo,
       coursePrice: courseDetails.coursePrice,
       userId: courseDetails.userId,
+      requirements: courseDetails.requirements,
     }));
-  }, []);
+  }, [courseDetails._id]);
 
   const pageTitles = ["Intended learners", "Course landing page", "Pricing"];
 
   const pageDisplay = () => {
     if (page === 0) {
-      return <CreateCourseIntent />;
+      return (
+        <CreateCourseIntent
+          requirements={requirements}
+          setRequirements={setRequirements}
+        />
+      );
     } else if (page === 1) {
       return (
         <CreateCourseLanding

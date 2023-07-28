@@ -165,24 +165,16 @@ const CourseDetails = () => {
             </div>
           </div>
 
-          <div className="courseRequirements">
-            <h2>Requiements</h2>
-            <ul>
-              <li>
-                JavaScript + HTML + CSS fundamentals are absolutely required
-              </li>
-              <li>
-                {`You DON'T need to be a JavaScript expert to succeed in this
-                course!`}
-              </li>
-              <li>
-                ES6+ JavaScript knowledge is beneficial but not a must-have
-              </li>
-              <li>
-                NO prior React or any other JS framework experience is required!
-              </li>
-            </ul>
-          </div>
+          {courseDetails?.requirements.length > 0 && (
+            <div className="courseRequirements">
+              <h2>Requiements</h2>
+              <ul>
+                {courseDetails?.requirements?.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           <div className="courseDescription">
             <h2>Description</h2>

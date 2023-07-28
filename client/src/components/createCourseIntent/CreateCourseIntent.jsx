@@ -1,7 +1,25 @@
 import React from "react";
 import "./CreateCourseIntent.css";
+import { AiOutlineClose } from "react-icons/ai";
 
-const CreateCourseIntent = () => {
+const CreateCourseIntent = ({ requirements, setRequirements }) => {
+  const handleAddRequireField = () => {
+    const newVal = [...requirements, []];
+    setRequirements(newVal);
+  };
+
+  const handleChangeRequire = (onChangeVal, i) => {
+    const inputData = [...requirements];
+    inputData[i] = onChangeVal.target.value;
+    setRequirements(inputData);
+  };
+
+  const handleDeleteRequire = (i) => {
+    const inputData = [...requirements];
+    inputData.splice(i, 1);
+    setRequirements(inputData);
+  };
+
   return (
     <div className="createCourseContent">
       <span>
@@ -50,10 +68,23 @@ const CreateCourseIntent = () => {
         </span>
 
         <div className="courseIntentInputs">
-          <input
-            type="text"
-            placeholder="Example: No programming experience needed. You will learn everything you need to know"
-          />
+          {requirements?.map((item, i) => (
+            <div key={i} className="courseIntentInput">
+              <input
+                type="text"
+                placeholder="Example: No programming experience needed. You will learn everything you need to know"
+                value={item}
+                onChange={(e) => handleChangeRequire(e, i)}
+              />
+              <button onClick={() => handleDeleteRequire(i)}>
+                <AiOutlineClose size={15} />
+              </button>
+            </div>
+          ))}
+
+          <button onClick={handleAddRequireField}>
+            Add more to your response
+          </button>
         </div>
       </div>
 

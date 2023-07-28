@@ -9,7 +9,7 @@
 .courseIntentInputs {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
   margin-top: 25px;
 }
 
@@ -18,4 +18,30 @@
   font-size: 16px;
   font-weight: 500;
   width: 100%;
+}
+
+.courseIntentInputs button {
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: #5624d0;
+  width: fit-content;
+  margin: 7px 0px;
+  cursor: pointer;
+}
+
+.courseIntentInputs button:hover {
+  color: #5e36c2;
+}
+
+.courseIntentInput {
+  display: flex;
+  align-items: center;
+}
+
+.courseIntentInput button {
+  padding: 12px;
+  border: 1px solid #000;
+  color: #000;
 }
