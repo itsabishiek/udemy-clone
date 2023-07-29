@@ -18,6 +18,7 @@ const CreateCourseDetails = () => {
   const { courseId } = useParams();
   const [cover, setCover] = useState(null);
   const [requirements, setRequirements] = useState([""]);
+  const [courseLearning, setCourseLearning] = useState([""]);
   const [uploading, setUploading] = useState(false);
   const [courseDetails, setCourseDetails] = useState({
     title: "",
@@ -47,7 +48,18 @@ const CreateCourseDetails = () => {
     try {
       const res = await newRequest.get(`/course/${courseId}`);
       setCourseDetails(res.data);
-      setRequirements([...courseDetails.requirements]);
+
+      if (courseDetails.courseLearning.length > 0) {
+        setCourseLearning([...courseDetails.courseLearning]);
+      } else {
+        setCourseLearning([""]);
+      }
+
+      if (courseDetails.requirements.length > 0) {
+        setRequirements([...courseDetails.requirements]);
+      } else {
+        setRequirements([""]);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -74,6 +86,7 @@ const CreateCourseDetails = () => {
       await newRequest.put(`/course/${courseId}`, {
         ...courseDetails,
         authorName: currentUser?.name,
+        courseLearning,
         requirements,
       });
       navigate(`/course/create/${courseId}`);
@@ -110,6 +123,8 @@ const CreateCourseDetails = () => {
         <CreateCourseIntent
           requirements={requirements}
           setRequirements={setRequirements}
+          courseLearning={courseLearning}
+          setCourseLearning={setCourseLearning}
         />
       );
     } else if (page === 1) {

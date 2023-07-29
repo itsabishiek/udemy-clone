@@ -61,6 +61,10 @@ const courseSchema = new Schema({
     type: Number,
     default: 0,
   },
+  courseLearning: {
+    type: [String],
+    required: false,
+  },
   requirements: {
     type: [String],
     required: false,

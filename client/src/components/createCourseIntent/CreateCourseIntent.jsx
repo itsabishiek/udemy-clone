@@ -1,23 +1,42 @@
 import React from "react";
-import "./CreateCourseIntent.css";
 import { AiOutlineClose } from "react-icons/ai";
+import "./CreateCourseIntent.css";
 
-const CreateCourseIntent = ({ requirements, setRequirements }) => {
+const CreateCourseIntent = ({
+  requirements,
+  setRequirements,
+  courseLearning,
+  setCourseLearning,
+}) => {
+  const handleAddLearningField = () => {
+    const newVal = [...courseLearning, []];
+    setCourseLearning(newVal);
+  };
   const handleAddRequireField = () => {
     const newVal = [...requirements, []];
     setRequirements(newVal);
   };
 
+  const handleChangeLearning = (onChangeVal, i) => {
+    const inputData = [...courseLearning];
+    inputData[i] = onChangeVal.target.value;
+    setCourseLearning(inputData);
+  };
   const handleChangeRequire = (onChangeVal, i) => {
     const inputData = [...requirements];
     inputData[i] = onChangeVal.target.value;
     setRequirements(inputData);
   };
 
+  const handleDeleteLearning = (i) => {
+    const deleteVal = [...courseLearning];
+    deleteVal.splice(i, 1);
+    setCourseLearning(deleteVal);
+  };
   const handleDeleteRequire = (i) => {
-    const inputData = [...requirements];
-    inputData.splice(i, 1);
-    setRequirements(inputData);
+    const deleteVal = [...requirements];
+    deleteVal.splice(i, 1);
+    setRequirements(deleteVal);
   };
 
   return (
@@ -38,22 +57,23 @@ const CreateCourseIntent = ({ requirements, setRequirements }) => {
         </span>
 
         <div className="courseIntentInputs">
-          <input
-            type="text"
-            placeholder="Example: Define the roles and responsibilities of a project manager"
-          />
-          <input
-            type="text"
-            placeholder="Example: Estimate project timelines and budgets"
-          />
-          <input
-            type="text"
-            placeholder="Example: Identify and manage project risks"
-          />
-          <input
-            type="text"
-            placeholder="Example: Complete a case study to manage a project from conception to completion"
-          />
+          {courseLearning.map((item, i) => (
+            <div key={i} className="courseIntentInput">
+              <input
+                type="text"
+                placeholder="Example: Define the roles and responsibilities of a project manager"
+                value={item}
+                onChange={(e) => handleChangeLearning(e, i)}
+              />
+              <button onClick={() => handleDeleteLearning(i)}>
+                <AiOutlineClose size={15} />
+              </button>
+            </div>
+          ))}
+
+          <button onClick={handleAddLearningField}>
+            Add more to your response
+          </button>
         </div>
       </div>
 

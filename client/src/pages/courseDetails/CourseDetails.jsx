@@ -95,33 +95,19 @@ const CourseDetails = () => {
 
       <div className="courseDetailsContent">
         <div className="courseContentLeft">
-          <div className="courseLearning">
-            <h2>{`What you'll learn`}</h2>
-            <div className="courseLearningInner">
-              <div className="courseLearingItem">
-                <BsCheck2 style={{ marginTop: 5 }} />
-                <p>Build powerful, fast, user-friendly and reactive web apps</p>
-              </div>
-              <div className="courseLearingItem">
-                <BsCheck2 style={{ marginTop: 5 }} />
-                <p>
-                  Provide amazing user experiences by leveraging the power of
-                  JavaScript with ease
-                </p>
-              </div>
-              <div className="courseLearingItem">
-                <BsCheck2 style={{ marginTop: 5 }} />
-                <p>
-                  Apply for high-paid jobs or work as a freelancer in one the
-                  most-demanded sectors you can find in web dev right now
-                </p>
-              </div>
-              <div className="courseLearingItem">
-                <BsCheck2 style={{ marginTop: 5 }} />
-                <p>Learn all about React Hooks and React Components</p>
+          {courseDetails?.courseLearning.length > 0 && (
+            <div className="courseLearning">
+              <h2>{`What you'll learn`}</h2>
+              <div className="courseLearningInner">
+                {courseDetails?.courseLearning.map((item, i) => (
+                  <div className="courseLearingItem" key={i}>
+                    <BsCheck2 style={{ marginTop: 5 }} />
+                    <p>{item}</p>
+                  </div>
+                ))}
               </div>
             </div>
-          </div>
+          )}
 
           <div className="courseIncludes">
             <h2>This course includes:</h2>
