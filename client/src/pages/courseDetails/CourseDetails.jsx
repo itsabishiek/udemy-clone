@@ -24,6 +24,7 @@ const CourseDetails = () => {
   const { courseId } = useParams();
   const [courseDetails, setCourseDetails] = useState();
   const [courseAuthor, setCourseAuthor] = useState();
+  const [orderDetails, setOrderDetails] = useState(null);
 
   const getCourseDetails = async () => {
     try {
@@ -31,9 +32,11 @@ const CourseDetails = () => {
       const courseAuthor = await newRequest.get(
         `/users/${courseDetails.data.userId}`
       );
+      const orderDetails = await newRequest.get(`/orders/${courseId}`);
 
       setCourseDetails(courseDetails.data);
       setCourseAuthor(courseAuthor.data);
+      setOrderDetails(orderDetails.data);
     } catch (error) {
       console.log(error);
     }
@@ -44,7 +47,7 @@ const CourseDetails = () => {
     scroll(0, 0);
   }, []);
 
-  // console.log(courseAuthor);
+  // console.log(orderDetails);
 
   return (
     <div className="courseDetails">
@@ -246,16 +249,23 @@ const CourseDetails = () => {
                 <hr />
               </div>
 
-              <div className="coursePricing">
-                <h3>₹{courseDetails?.coursePrice}</h3>
-                <Link to={`/make-payment/${courseId}`}>
-                  <button>Buy this course</button>
-                </Link>
-                <p className="courseHelperText">
-                  30-Days Money-Back Guarantee.
-                </p>
-                <p className="courseHelperText">Full Lifetime Access.</p>
-              </div>
+              {orderDetails?.isCompleted ? (
+                <div className="coursePricing">
+                  <button>Go to Course</button>
+                  <p className="courseHelperText">Start lesrning today</p>
+                </div>
+              ) : (
+                <div className="coursePricing">
+                  <h3>₹{courseDetails?.coursePrice}</h3>
+                  <Link to={`/make-payment/${courseId}`}>
+                    <button>Buy this course</button>
+                  </Link>
+                  <p className="courseHelperText">
+                    30-Days Money-Back Guarantee.
+                  </p>
+                  <p className="courseHelperText">Full Lifetime Access.</p>
+                </div>
+              )}
 
               <div className="courseContentRightLinks">
                 <Link to="/">Share</Link>

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import ReviewInput from "./ReviewInput";
 import newRequest from "../../utils/newRequest";
 import { useParams } from "react-router-dom";
-import "./Review.css";
 import ReviewItem from "./ReviewItem";
+import "./Review.css";
 
 const Review = () => {
   const { courseId } = useParams();

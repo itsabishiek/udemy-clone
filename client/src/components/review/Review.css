@@ -110,3 +110,15 @@
   border: none;
   cursor: pointer;
 }
+
+@media (max-width: 450px) {
+  .reviewInputHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .reviewInput textarea {
+    margin-top: 2px;
+    width: 100%;
+  }
+}

@@ -63,4 +63,14 @@ const confirmPayment = async (req, res, next) => {
   }
 };
 
-export { getOrders, createPaymentIntent, confirmPayment };
+const getPaidCourse = async (req, res, next) => {
+  try {
+    const courseBought = await Order.findOne({ courseId: req.params.courseId });
+
+    res.status(200).send(courseBought);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export { getOrders, createPaymentIntent, confirmPayment, getPaidCourse };

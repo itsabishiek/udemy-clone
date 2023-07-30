@@ -4,11 +4,13 @@ import {
   confirmPayment,
   createPaymentIntent,
   getOrders,
+  getPaidCourse,
 } from "../controllers/order.controller.js";
 
 const router = express.Router();
 
 router.get("/", verifyToken, getOrders);
+router.get("/:courseId", verifyToken, getPaidCourse);
 router.post("/create-payment-intent/:id", verifyToken, createPaymentIntent);
 router.put("/", verifyToken, confirmPayment);
 
