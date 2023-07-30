@@ -27,6 +27,8 @@ const register = async (req, res, next) => {
       .cookie("accessToken", token, {
         httpOnly: true,
         expires: expiryDate,
+        sameSite: "none",
+        secure: true,
       })
       .status(200)
       .send(info);
@@ -57,6 +59,8 @@ const login = async (req, res, next) => {
       .cookie("accessToken", token, {
         httpOnly: true,
         expires: expiryDate,
+        sameSite: "none",
+        secure: true,
       })
       .status(200)
       .send(info);
