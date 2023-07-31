@@ -1,9 +1,10 @@
 import React from "react";
 import { BsCircle } from "react-icons/bs";
+import Loading from "../loader/Loading";
 
 import "./CreateCourseSidebar.css";
 
-const CreateCourseSidebar = ({ setPage, handleSubmit }) => {
+const CreateCourseSidebar = ({ setPage, handleSubmit, submitting }) => {
   return (
     <div className="createCourseSidebar">
       <div className="createSidebarItems">
@@ -52,7 +53,9 @@ const CreateCourseSidebar = ({ setPage, handleSubmit }) => {
         </div>
       </div>
 
-      <button onClick={handleSubmit}>Submit for review</button>
+      <button onClick={handleSubmit}>
+        {submitting ? <Loading width={20} height={20} /> : "Submit for review"}
+      </button>
     </div>
   );
 };

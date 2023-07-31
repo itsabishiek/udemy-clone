@@ -5,17 +5,22 @@ import newRequest from "../../utils/newRequest";
 import getCurrentUser from "../../utils/getCurrentUser";
 
 import "./Instructor.css";
+import Loader from "../../components/loader/Loader";
 
 const Instructor = () => {
-  const [courses, setCourses] = useState([]);
   const currentUser = getCurrentUser();
+  const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const getCourses = async () => {
     try {
+      setLoading(true);
       const courses = await newRequest.get(
         `/courses?userId=${currentUser._id}`
       );
+
       setCourses(courses.data);
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -52,10 +57,16 @@ const Instructor = () => {
 
       <div className="coursesList">
         {courses.length === 0 ? (
-          <div className="coursesFallback">
-            <h3>Created courses will appear here.</h3>
-            <Link to="/course/create">Start Course</Link>
-          </div>
+          <>
+            {loading ? (
+              <Loader />
+            ) : (
+              <div className="coursesFallback">
+                <h3>Created courses will appear here.</h3>
+                <Link to="/course/create">Start Course</Link>
+              </div>
+            )}
+          </>
         ) : (
           <>
             {courses.map((course) => (

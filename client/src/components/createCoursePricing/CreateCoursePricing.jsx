@@ -1,7 +1,14 @@
 import React from "react";
+import Loading from "../loader/Loading";
+
 import "./CreateCoursePricing.css";
 
-const CreateCoursePricing = ({ courseDetails, handleChange, handleSubmit }) => {
+const CreateCoursePricing = ({
+  courseDetails,
+  handleChange,
+  handleSubmit,
+  submitting,
+}) => {
   return (
     <div className="createCourseContent">
       <div className="createCoursePricing">
@@ -34,7 +41,9 @@ const CreateCoursePricing = ({ courseDetails, handleChange, handleSubmit }) => {
             <option value="1299">₹1299 (tier 3)</option>
             <option value="1699">₹1699 (tier 4)</option>
           </select>
-          <button onClick={handleSubmit}>Save</button>
+          <button onClick={handleSubmit}>
+            {submitting ? <Loading width={20} height={20} /> : "Save"}
+          </button>
         </div>
       </div>
     </div>

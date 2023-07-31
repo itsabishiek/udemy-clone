@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Loading from "../../components/loader/Loading";
 import newRequest from "../../utils/newRequest";
 
 import "./Login.css";
@@ -9,6 +10,7 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
@@ -21,6 +23,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       const res = await newRequest.post("/auth/login", user, {
         headers: {
           "Content-Type": "application/json",
@@ -30,8 +33,8 @@ const Login = () => {
       console.log(res.data);
 
       window.location.href = "/";
+      setLoading(false);
     } catch (error) {
-      console.log(error);
       setError(error.response.data);
     }
   };
@@ -88,7 +91,9 @@ const Login = () => {
 
           {error && <span className="authError">{error}</span>}
 
-          <button className="submitBtn">Log in</button>
+          <button className="submitBtn">
+            {loading ? <Loading height={20} width={20} /> : "Log in"}
+          </button>
 
           <div className="helperTextWrapper">
             <span className="helperText">

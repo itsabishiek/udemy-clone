@@ -3,15 +3,19 @@ import newRequest from "../../utils/newRequest";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import "./CourseEnrolled.css";
+import Loader from "../../components/loader/Loader";
 
 const CourseEnrolled = () => {
   const [enrolledCourses, setEnrolledCourses] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const getEnrolledCourses = async () => {
     try {
+      setLoading(true);
       const res = await newRequest.get("/orders");
 
       setEnrolledCourses(res.data);
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -48,16 +52,22 @@ const CourseEnrolled = () => {
             ))}
           </>
         ) : (
-          <div
-            style={{
-              display: "flex",
-              height: "100px",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <h3>No Courses Enrolled Yet!</h3>
-          </div>
+          <>
+            {loading ? (
+              <Loader />
+            ) : (
+              <div
+                style={{
+                  display: "flex",
+                  height: "100px",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <h3>No Courses Enrolled Yet!</h3>
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>

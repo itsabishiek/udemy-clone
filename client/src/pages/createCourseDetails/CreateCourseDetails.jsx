@@ -8,6 +8,8 @@ import CreateCoursePricing from "../../components/createCoursePricing/CreateCour
 import newRequest from "../../utils/newRequest";
 import upload from "../../utils/upload";
 import getCurrentUser from "../../utils/getCurrentUser";
+import BackdropLoader from "../../components/loader/BackdropLoader";
+import Loading from "../../components/loader/Loading";
 
 import "./CreateCourseDetails.css";
 
@@ -20,6 +22,8 @@ const CreateCourseDetails = () => {
   const [requirements, setRequirements] = useState([""]);
   const [courseLearning, setCourseLearning] = useState([""]);
   const [uploading, setUploading] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [courseDetails, setCourseDetails] = useState({
     title: "",
     type: "",
@@ -46,6 +50,7 @@ const CreateCourseDetails = () => {
 
   const getCreatedCourse = async () => {
     try {
+      setLoading(true);
       const res = await newRequest.get(`/course/${courseId}`);
       setCourseDetails(res.data);
 
@@ -60,6 +65,7 @@ const CreateCourseDetails = () => {
       } else {
         setRequirements([""]);
       }
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -83,13 +89,17 @@ const CreateCourseDetails = () => {
 
   const handleSubmit = async () => {
     try {
+      setSubmitting(true);
+
       await newRequest.put(`/course/${courseId}`, {
         ...courseDetails,
         authorName: currentUser?.name,
         courseLearning,
         requirements,
       });
+
       navigate(`/course/create/${courseId}`);
+      setSubmitting(false);
     } catch (error) {
       console.log(error);
     }
@@ -144,6 +154,7 @@ const CreateCourseDetails = () => {
           courseDetails={courseDetails}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
+          submitting={submitting}
         />
       );
     }
@@ -151,18 +162,30 @@ const CreateCourseDetails = () => {
 
   return (
     <div className="createCourseDetails">
+      {loading && <BackdropLoader />}
       <div className="hammenu">
         <AiOutlineMenuUnfold
+          style={{ cursor: "pointer" }}
           fontSize="20px"
           onClick={() => setShowMenu(!showMenu)}
         />
-        <button onClick={handleSubmit}>Submit for review</button>
+        <button onClick={handleSubmit}>
+          {submitting ? (
+            <Loading width={20} height={20} />
+          ) : (
+            "Submit for review"
+          )}
+        </button>
       </div>
       <div
         className="createCourseLeft"
         style={showMenu ? { display: "none" } : { display: "flex" }}
       >
-        <CreateCourseSidebar setPage={setPage} handleSubmit={handleSubmit} />
+        <CreateCourseSidebar
+          setPage={setPage}
+          handleSubmit={handleSubmit}
+          submitting={submitting}
+        />
       </div>
       <div className="createCourseRight">
         <div className="createCourseRightHeader">

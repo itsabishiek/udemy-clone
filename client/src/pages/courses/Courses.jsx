@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { AiFillStar } from "react-icons/ai";
 import newRequest from "../../utils/newRequest";
 import "./Courses.css";
+import Loader from "../../components/loader/Loader";
 
 const Courses = () => {
   const { search } = useLocation();
@@ -57,16 +58,7 @@ const Courses = () => {
       </div>
 
       {loading ? (
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            height: "150px",
-          }}
-        >
-          <h2>Loading...</h2>
-        </div>
+        <Loader />
       ) : (
         <>
           {courses.length === 0 ? (

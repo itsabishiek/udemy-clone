@@ -45,6 +45,7 @@
     padding: 12px;
     background-color: #a435f0;
     color: white;
+    min-width: 100px;
   }
 
   .createCourseDetails {

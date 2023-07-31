@@ -6,9 +6,10 @@ import Slide from "../../components/slide/Slide";
 import newRequest from "../../utils/newRequest";
 
 import "./Home.css";
+import Loader from "../../components/loader/Loader";
 
 const Home = () => {
-  const [courses, setCourses] = useState();
+  const [courses, setCourses] = useState([]);
 
   const getCourses = async () => {
     try {
@@ -59,11 +60,16 @@ const Home = () => {
           <h2 style={{ marginBottom: "10px", padding: "0px 24px" }}>
             Students are viewing
           </h2>
-          <Slide>
-            {courses?.map((course) => (
-              <CourseCard key={course._id} course={course} />
-            ))}
-          </Slide>
+
+          {courses.length === 0 ? (
+            <Loader />
+          ) : (
+            <Slide>
+              {courses?.map((course) => (
+                <CourseCard key={course._id} course={course} />
+              ))}
+            </Slide>
+          )}
         </div>
 
         <Trusted />
