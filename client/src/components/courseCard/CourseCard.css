@@ -1,5 +1,5 @@
 .courseCard {
-  width: 245px;
+  /* width: 245px; */
   display: flex;
   flex-direction: column;
   cursor: pointer;

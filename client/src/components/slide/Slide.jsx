@@ -1,25 +1,44 @@
 import React from "react";
-import Carousel from "react-elastic-carousel";
-import "./Slide.css";
+import Carousel from "better-react-carousel";
 
 const Slide = ({ children }) => {
   const breakpoints = [
-    { width: 1, itemsToShow: 1 },
-    { width: 550, itemsToShow: 3 },
-    { width: 768, itemsToShow: 3 },
-    { width: 1024, itemsToShow: 5 },
-    { width: 1200, itemsToShow: 5 },
+    {
+      breakpoint: 650,
+      cols: 2,
+      rows: 1,
+      gap: 10,
+    },
+    {
+      breakpoint: 800,
+      cols: 3,
+      rows: 1,
+      gap: 10,
+    },
+    {
+      breakpoint: 1000,
+      cols: 3,
+      rows: 1,
+      gap: 10,
+    },
+    {
+      breakpoint: 1500,
+      cols: 5,
+      rows: 1,
+      gap: 10,
+    },
+    {
+      breakpoint: 2560,
+      cols: 6,
+      rows: 1,
+      gap: 10,
+    },
   ];
 
   return (
     <div className="slide">
       <div className="slideContainer">
-        <Carousel
-          breakPoints={breakpoints}
-          pagination={false}
-          enableSwipe
-          enableMouseSwipe
-        >
+        <Carousel responsiveLayout={breakpoints} mobileBreakpoint={500}>
           {children}
         </Carousel>
       </div>

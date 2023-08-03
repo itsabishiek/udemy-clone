@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import Trusted from "../../components/trusted/Trusted";
 import CourseCard from "../../components/courseCard/CourseCard";
-import Slide from "../../components/slide/Slide";
 import newRequest from "../../utils/newRequest";
+import Carousel from "better-react-carousel";
+import Slide from "../../components/slide/Slide";
+import Loader from "../../components/loader/Loader";
 
 import "./Home.css";
-import Loader from "../../components/loader/Loader";
 
 const Home = () => {
   const [courses, setCourses] = useState([]);
@@ -66,7 +67,9 @@ const Home = () => {
           ) : (
             <Slide>
               {courses?.map((course) => (
-                <CourseCard key={course._id} course={course} />
+                <Carousel.Item key={course._id}>
+                  <CourseCard course={course} />
+                </Carousel.Item>
               ))}
             </Slide>
           )}
