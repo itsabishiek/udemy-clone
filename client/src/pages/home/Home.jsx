@@ -3,9 +3,8 @@ import { AiOutlineSearch } from "react-icons/ai";
 import Trusted from "../../components/trusted/Trusted";
 import CourseCard from "../../components/courseCard/CourseCard";
 import newRequest from "../../utils/newRequest";
-import Carousel from "better-react-carousel";
-import Slide from "../../components/slide/Slide";
 import Loader from "../../components/loader/Loader";
+import Slide from "../../components/slide/Slide";
 
 import "./Home.css";
 
@@ -67,9 +66,7 @@ const Home = () => {
           ) : (
             <Slide>
               {courses?.map((course) => (
-                <Carousel.Item key={course._id}>
-                  <CourseCard course={course} />
-                </Carousel.Item>
+                <CourseCard key={course._id} course={course} />
               ))}
             </Slide>
           )}

@@ -10,8 +10,8 @@
   width: 100%;
 }
 
-.rec-item-wrapper {
-  width: 245px !important;
+.rec-slider-container {
+  position: relative;
 }
 
 .rec-arrow {
