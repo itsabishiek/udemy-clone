@@ -260,6 +260,40 @@
   margin-bottom: 30px;
 }
 
+.showMore {
+  animation: showMore 400ms;
+  transform-origin: top;
+  margin-bottom: 8px;
+}
+
+.showLess {
+  animation: showLess 400ms;
+  transform-origin: bottom;
+  margin-bottom: 8px;
+}
+
+@keyframes showMore {
+  from {
+    transform: scale(1, 0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+}
+
+@keyframes showLess {
+  from {
+    transform: scale(1, 0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+}
+
 @media (min-width: 1024px) {
   .courseDetailsHeaderMobile {
     display: none;

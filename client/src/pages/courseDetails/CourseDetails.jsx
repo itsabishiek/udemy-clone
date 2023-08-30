@@ -26,6 +26,7 @@ const CourseDetails = () => {
   const [courseDetails, setCourseDetails] = useState([]);
   const [courseAuthor, setCourseAuthor] = useState([]);
   const [orderDetails, setOrderDetails] = useState(null);
+  const [showMore, setShowMore] = useState(false);
 
   const getCourseDetails = async () => {
     try {
@@ -170,7 +171,38 @@ const CourseDetails = () => {
 
             <div className="courseDescription">
               <h2>Description</h2>
-              <p>{courseDetails?.description}</p>
+
+              {!showMore ? (
+                <div>
+                  <p className="showLess">
+                    {courseDetails?.description?.slice(0, 600)}...{" "}
+                  </p>
+                  <span
+                    onClick={() => setShowMore(true)}
+                    style={{
+                      fontWeight: "bold",
+                      color: "#a435f0",
+                      cursor: "pointer",
+                    }}
+                  >
+                    Show more
+                  </span>
+                </div>
+              ) : (
+                <div>
+                  <p className="showMore">{courseDetails?.description}</p>
+                  <span
+                    onClick={() => setShowMore(false)}
+                    style={{
+                      fontWeight: "bold",
+                      color: "#a435f0",
+                      cursor: "pointer",
+                    }}
+                  >
+                    Show less
+                  </span>
+                </div>
+              )}
             </div>
 
             <Review />
